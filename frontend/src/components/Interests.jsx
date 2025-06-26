@@ -7,6 +7,7 @@ import {
   Learning,
 } from 'iconoir-react';
 import SectionHeader from './SectionHeader';
+import SectionLine from './SectionLine';
 
 const icons = [ 
   { Component: LaptopDevMode, label: 'Data & Computer Science' },
@@ -96,6 +97,7 @@ function SkillsSection() {
           );
         })}
       </div>
+      <SectionLine />
     </section>
   );
 }
