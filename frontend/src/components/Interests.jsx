@@ -51,7 +51,6 @@ function SkillsSection() {
       id="skills"
       ref={sectionRef}
       className="max-w-6xl mx-auto px-6 scroll-mt-20"
-      aria-labelledby="skills-heading"
     >
       <SectionHeader title={sectionTitle} description={sectionDescription} />
       <div className="flex flex-wrap justify-center gap-16">

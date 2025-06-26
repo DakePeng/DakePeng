@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import ProjectCard from './ProjectCard';
+import SectionHeader from './SectionHeader';
+import SectionLine from './SectionLine';
 
 const ProjectCarousel = ({ projects }) => {
   const SIDE_COUNT = 2; // empty cards at start and end
   const [centerIndex, setCenterIndex] = useState(SIDE_COUNT);
   const barRef = useRef(null);
   const dragging = React.useRef(false);
-
   const fanStyles = [
     { rotate: '-10deg', translateX: '-450px', scale: 0.7, zIndex: 1 },
     { rotate: '-5deg', translateX: '-225px', scale: 0.85, zIndex: 2 },
@@ -14,8 +15,9 @@ const ProjectCarousel = ({ projects }) => {
     { rotate: '5deg', translateX: '225px', scale: 0.85, zIndex: 2 },
     { rotate: '10deg', translateX: '450px', scale: 0.7, zIndex: 1 },
   ];
-  console.log(centerIndex)
   const dotPositionPercent = (centerIndex / (projects.length - 1)) * 100;
+  const sectionTitle = 'Example Projects';
+  const sectionDescription = 'Explore a selection of my previous projects, showcasing creativity and technical skills across various domains.';
 
   const onBarClick = (e) => {
     if (!barRef.current) return;
@@ -52,65 +54,78 @@ const ProjectCarousel = ({ projects }) => {
   };
 
   return (
-    <div className="w-full max-w-[1600px] mx-auto select-none">
-      {/* Carousel container */}
-      <div className="relative h-[400px] overflow-visible">
-        {projects.map((project, index) => {
-          if (index > centerIndex + SIDE_COUNT || index < centerIndex - SIDE_COUNT) return null;
-          const tempIndex = index - centerIndex + SIDE_COUNT;
-          const style = fanStyles[tempIndex];
-          const isCenter = index === centerIndex;
+    <section 
+      id="skills"
+      className="max-w-6xl mx-auto px-6 scroll-mt-20">
+      <SectionHeader title={sectionTitle} description={sectionDescription}/>
+      <div className="w-full max-w-[1600px] mx-auto select-none">
+        {/* Carousel container */}
+        <div className="relative h-[400px] overflow-visible">
+          {projects.map((project, index) => {
+            if (index > centerIndex + SIDE_COUNT || index < centerIndex - SIDE_COUNT) return null;
+            const tempIndex = index - centerIndex + SIDE_COUNT;
+            const style = fanStyles[tempIndex];
+            const isCenter = index === centerIndex;
 
-          return (
-            <div
-              key={project.id}
-              className={`
-                absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                transition-all duration-500 ease-in-out 
-                cursor-pointer 
-                ${isCenter ? 'opacity-100 scale-100' : 'opacity-50'}
-              `}
-              style={{
-                transform: `
-                  translateX(${style.translateX}) 
-                  rotate(${style.rotate}) 
-                  scale(${style.scale})
-                `,
-                zIndex: style.zIndex,
-                transformOrigin: 'center bottom',
-                transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+            return (
+              <div
+                key={project.id}
+                className={`
+                  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                  transition-all duration-500 ease-in-out 
+                  cursor-pointer 
+                  ${isCenter ? 'opacity-100 scale-100' : 'opacity-50'}
+                `}
+                style={{
+                  transform: `
+                    translateX(${style.translateX}) 
+                    rotate(${style.rotate}) 
+                    scale(${style.scale})
+                  `,
+                  zIndex: style.zIndex,
+                  transformOrigin: 'center bottom',
+                  transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+                }}
+                onClick={() => {
+                // if the project is clicked, open the link; otherwise, set the center index
+                if (index === centerIndex && project?.link) {
+                  window.open(project.link, '_blank');
+                } else {
+                  setCenterIndex(index);
+                }
               }}
-              onClick={() => setCenterIndex(index)}
-            >
-              <ProjectCard {...project} />
-            </div>
-          );
-        })}
-      </div>
+              >
+                <ProjectCard {...project} />
+              </div>
+            );
+          })}
+        </div>
 
-      {/* Bar dialer below the carousel */}
-      <div
-        ref={barRef}
-        onClick={onBarClick}
-        className="relative mt-8 w-80 h-3 bg-gray-300 rounded-full cursor-grab mx-auto"
-      >
-        {/* Draggable Dot */}
+        {/* Bar dialer below the carousel */}
         <div
-          onMouseDown={onDotMouseDown}
-          className="absolute top-1/2 -translate-y-1/2 w-6 h-6 bg-blue-600 rounded-full shadow-lg cursor-grab"
-          style={{
-            left: `${dotPositionPercent}%`,
-            transform: 'translateX(-50%)',
-            transition: dragging.current ? 'none' : 'left 300ms ease-in-out',
-          }}
-          role="slider"
-          aria-valuemin={1}
-          aria-valuemax={projects.length - 1}
-          aria-valuenow={centerIndex}
-          tabIndex={0}
-        />
+          ref={barRef}
+          onClick={onBarClick}
+          className="relative mt-8 w-80 h-5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full cursor-grab mx-auto"
+        >
+          {/* Draggable Dot */}
+          <div
+            onMouseDown={onDotMouseDown}
+            className="absolute top-1/2 -translate-y-1/2 w-7 h-7 bg-white rounded-full shadow-lg cursor-grab border-4 border-blue-700"
+            style={{
+              left: `${dotPositionPercent}%`,
+              transform: 'translateX(-50%)',
+              transition: dragging.current ? 'none' : 'left 300ms ease-in-out',
+            }}
+            role="slider"
+            aria-valuemin={0}
+            aria-valuemax={projects.length - 1}
+            aria-valuenow={centerIndex}
+            tabIndex={0}
+          />
+        </div>
+        <SectionLine />
       </div>
-    </div>
+    </section>
   );
 };
 
