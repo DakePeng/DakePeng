@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <CoverScreen />
+      <CoverScreen {...CoverScreen.defaultProps}/>
       <SectionLine />
       <ExperienceShowcase {...ExperienceShowcase.defaultProps} />
       <Interests />
