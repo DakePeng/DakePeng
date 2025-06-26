@@ -16,7 +16,7 @@ const ProjectCarousel = ({ projects }) => {
     { rotate: '10deg', translateX: '450px', scale: 0.7, zIndex: 1 },
   ];
   const dotPositionPercent = (centerIndex / (projects.length - 1)) * 100;
-  const sectionTitle = 'Example Projects';
+  const sectionTitle = 'Projects';
   const sectionDescription = 'Explore a selection of my previous projects, showcasing creativity and technical skills across various domains.';
 
   const onBarClick = (e) => {
@@ -55,7 +55,7 @@ const ProjectCarousel = ({ projects }) => {
 
   return (
     <section 
-      id="skills"
+      id="interests"
       className="max-w-6xl mx-auto px-6 scroll-mt-20">
       <SectionHeader title={sectionTitle} description={sectionDescription}/>
       <div className="w-full max-w-[1600px] mx-auto select-none">
@@ -122,6 +122,15 @@ const ProjectCarousel = ({ projects }) => {
             aria-valuenow={centerIndex}
             tabIndex={0}
           />
+        </div>
+        {/* View All Link */}
+        <div className="mt-8 text-center">
+          <a
+            href="#projects"
+            className="inline-block px-4 py-2 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"
+          >
+            View All Projects
+          </a>
         </div>
         <SectionLine />
       </div>
