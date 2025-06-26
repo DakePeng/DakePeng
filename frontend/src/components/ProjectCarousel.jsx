@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import ProjectCard from './ProjectCard';
 
 const ProjectCarousel = ({ projects }) => {
+  projects = [{}, {}, ...projects,{}, {}];
   const EMPTY_COUNT = 2; // empty cards at start and end
   const visibleProjects = projects.slice(EMPTY_COUNT, projects.length - EMPTY_COUNT);
   const [centerIndex, setCenterIndex] = useState(EMPTY_COUNT);
@@ -62,10 +63,9 @@ const ProjectCarousel = ({ projects }) => {
       {/* Carousel container */}
       <div className="relative h-[400px] overflow-visible">
         {projects.map((project, index) => {
-          if (project.id < 0) return null;
-          if (index > centerIndex + 2 || index < centerIndex - 2) return null;
-
-          const tempIndex = index - centerIndex + 2;
+          if (index < EMPTY_COUNT || index + EMPTY_COUNT >= projects.length ) return null;
+          if (index > centerIndex + EMPTY_COUNT || index < centerIndex - EMPTY_COUNT) return null;
+          const tempIndex = index - centerIndex + EMPTY_COUNT;
           const style = fanStyles[tempIndex];
           const isCenter = index === centerIndex;
 
@@ -123,15 +123,15 @@ const ProjectCarousel = ({ projects }) => {
 };
 
 // Default dummy props
-ProjectCarousel.defaultProps = [
-  {id: -1},
-  {id: -2},
+ProjectCarousel.defaultProps = {
+  projects : [
   {
     id: 0,
     image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
     title: 'Mountain Escape',
     description: 'Explore breathtaking mountain landscapes with this travel guide.',
     link: 'https://example.com/mountain-escape',
+    tags: ['travel', 'nature'],
   },
   {
     id: 1,
@@ -139,6 +139,7 @@ ProjectCarousel.defaultProps = [
     title: 'City Lights',
     description: 'Discover vibrant city nightlife with curated spots and events.',
     link: 'https://example.com/city-lights',
+    tags: ['urban', 'nightlife'],
   },
   {
     id: 2,
@@ -146,6 +147,7 @@ ProjectCarousel.defaultProps = [
     title: 'Creative Workspace',
     description: 'Boost your productivity with tips for a creative and organized workspace.',
     link: 'https://example.com/creative-workspace',
+    tags: ['productivity', 'tech', 'workspace'],
   },
   {
     id: 3,
@@ -153,6 +155,7 @@ ProjectCarousel.defaultProps = [
     title: 'Gourmet Recipes',
     description: 'Step-by-step guides to create delicious gourmet meals at home.',
     link: 'https://example.com/gourmet-recipes',
+    tags: ['food', 'cooking'],
   },
   {
     id: 4,
@@ -160,9 +163,40 @@ ProjectCarousel.defaultProps = [
     title: 'Adventure Gear',
     description: 'The latest gear reviews and recommendations for your next adventure.',
     link: 'https://example.com/adventure-gear',
+    tags: ['outdoors', 'gear'],
   },
-  {id: -3},
-  {id: -4}
-];
+  {
+    id: 5,
+    image: 'https://images.unsplash.com/photo-1522199670076-2852f80289c3?auto=format&fit=crop&w=400&q=80',
+    title: 'Minimalist Living',
+    description: 'Simplify your life with minimalist principles for home and mind.',
+    link: 'https://example.com/minimalist-living',
+    tags: ['lifestyle', 'minimalism'],
+  },
+  {
+    id: 6,
+    image: 'https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=400&q=80',
+    title: 'Coding Bootcamp',
+    description: 'Jumpstart your coding career with these bootcamp resources.',
+    link: 'https://example.com/coding-bootcamp',
+    tags: ['tech', 'education'],
+  },
+  {
+    id: 8,
+    image: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=400&q=80',
+    title: 'Home Gym Setup',
+    description: 'Build your dream gym at home with these essentials.',
+    link: 'https://example.com/home-gym-setup',
+    tags: ['fitness', 'home'],
+  },
+  {
+    id: 9,
+    image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=400&q=80',
+    title: 'Digital Art Tools',
+    description: 'Explore the best software and hardware for digital artists.',
+    link: 'https://example.com/digital-art-tools',
+    tags: ['art', 'tech', 'creativity'],
+  }
+]};
 
 export default ProjectCarousel;

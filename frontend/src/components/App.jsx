@@ -5,8 +5,8 @@ import ProjectCarousel from './ProjectCarousel.jsx'
 function App() {
   return (
     <div>
-      {/* <FanCarousel projects={projects} /> */}
-       <ProjectCard {...ProjectCard.defaultProps}/>
+      <ProjectCarousel {...ProjectCarousel.defaultProps} />
+      {/* <ProjectCard {...ProjectCard.defaultProps}/> */}
     </div>
   )
 }
