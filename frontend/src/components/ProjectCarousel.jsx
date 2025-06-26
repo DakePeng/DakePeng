@@ -1,11 +1,9 @@
 import React, { useState, useRef } from 'react';
 import ProjectCard from './ProjectCard';
-import SectionLine from './SectionLine';
+
 const ProjectCarousel = ({ projects }) => {
-  const paddedProjects = [{}, {}, ...projects,{}, {}];
-  const EMPTY_COUNT = 2; // empty cards at start and end
-  const visibleProjects = paddedProjects.slice(EMPTY_COUNT, paddedProjects.length - EMPTY_COUNT);
-  const [centerIndex, setCenterIndex] = useState(EMPTY_COUNT);
+  const SIDE_COUNT = 2; // empty cards at start and end
+  const [centerIndex, setCenterIndex] = useState(SIDE_COUNT);
   const barRef = useRef(null);
   const dragging = React.useRef(false);
 
@@ -16,32 +14,27 @@ const ProjectCarousel = ({ projects }) => {
     { rotate: '5deg', translateX: '225px', scale: 0.85, zIndex: 2 },
     { rotate: '10deg', translateX: '450px', scale: 0.7, zIndex: 1 },
   ];
-
-  const visibleIndex = centerIndex - EMPTY_COUNT;
-  const dotPositionPercent = (visibleIndex / (visibleProjects.length - 1)) * 100;
+  console.log(centerIndex)
+  const dotPositionPercent = (centerIndex / (projects.length - 1)) * 100;
 
   const onBarClick = (e) => {
     if (!barRef.current) return;
     const rect = barRef.current.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const percent = clickX / rect.width;
-    const newVisibleIndex = Math.round(percent * (visibleProjects.length - 1));
-    const newCenterIndex = newVisibleIndex + EMPTY_COUNT;
+    const newCenterIndex = Math.round(percent * (projects.length - 1));
+    console.log('Clicked index:', newCenterIndex);
     setCenterIndex(newCenterIndex);
   };
 
   const onMouseMove = (e) => {
     if (!dragging.current || !barRef.current) return;
-
     const rect = barRef.current.getBoundingClientRect();
     let newX = e.clientX - rect.left;
-
     if (newX < 0) newX = 0;
     if (newX > rect.width) newX = rect.width;
-
     const percent = newX / rect.width;
-    const newVisibleIndex = Math.round(percent * (visibleProjects.length - 1));
-    const newCenterIndex = newVisibleIndex + EMPTY_COUNT;
+    const newCenterIndex = Math.round(percent * (projects.length - 1));
     setCenterIndex(newCenterIndex);
   };
 
@@ -63,9 +56,8 @@ const ProjectCarousel = ({ projects }) => {
       {/* Carousel container */}
       <div className="relative h-[400px] overflow-visible">
         {projects.map((project, index) => {
-          if (index < EMPTY_COUNT || index + EMPTY_COUNT >= projects.length ) return null;
-          if (index > centerIndex + EMPTY_COUNT || index < centerIndex - EMPTY_COUNT) return null;
-          const tempIndex = index - centerIndex + EMPTY_COUNT;
+          if (index > centerIndex + SIDE_COUNT || index < centerIndex - SIDE_COUNT) return null;
+          const tempIndex = index - centerIndex + SIDE_COUNT;
           const style = fanStyles[tempIndex];
           const isCenter = index === centerIndex;
 
@@ -88,14 +80,7 @@ const ProjectCarousel = ({ projects }) => {
                 transformOrigin: 'center bottom',
                 transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
               }}
-              onClick={() => {
-                // if the project is clicked, open the link; otherwise, set the center index
-                if (index === centerIndex && project?.link) {
-                  window.open(project.link, '_blank');
-                } else {
-                  setCenterIndex(index);
-                }
-              }}
+              onClick={() => setCenterIndex(index)}
             >
               <ProjectCard {...project} />
             </div>
@@ -119,13 +104,12 @@ const ProjectCarousel = ({ projects }) => {
             transition: dragging.current ? 'none' : 'left 300ms ease-in-out',
           }}
           role="slider"
-          aria-valuemin={0}
-          aria-valuemax={visibleProjects.length - 1}
-          aria-valuenow={visibleIndex}
+          aria-valuemin={1}
+          aria-valuemax={projects.length - 1}
+          aria-valuenow={centerIndex}
           tabIndex={0}
         />
       </div>
-      <SectionLine />
     </div>
   );
 };
