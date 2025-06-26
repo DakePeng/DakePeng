@@ -25,7 +25,7 @@ const ProjectCard = (props) => {
             href={props.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-4 text-indigo-600 hover:text-indigo-800 text-sm font-medium"
+            className="inline-block mt-4 text-blue-600 hover:text-blue-800 text-sm font-medium"
           >
             View Project →
           </a>

@@ -124,7 +124,7 @@ const ProjectCarousel = ({ projects }) => {
           />
         </div>
         {/* View All Link */}
-        <div className="mt-8 text-center">
+        <div className="mt-16 text-center">
           <a
             href="#projects"
             className="inline-block px-4 py-2 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"

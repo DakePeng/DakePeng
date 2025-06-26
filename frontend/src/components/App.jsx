@@ -1,19 +1,20 @@
-import './App.css'
 import ProjectCarousel from './ProjectCarousel.jsx'
 import Interests from './Interests.jsx'
 import SectionLine from './SectionLine.jsx'
 import Header from './Header.jsx'
-function App() {
+import ExperienceShowcase from './ExperienceShowcase.jsx' 
+import CoverScreen from './Cover.jsx'
+const App = () => {
   return (
-    <div>
+    <>
       <Header />
+      <CoverScreen />
       <SectionLine />
-      <Interests /> 
+      <ExperienceShowcase {...ExperienceShowcase.defaultProps} />
+      <Interests />
       <ProjectCarousel {...ProjectCarousel.defaultProps} />
-      {/* <ProjectCard {...ProjectCard.defaultProps}/> */}
-
-    </div>
-  )
-}
+    </>
+  );
+};
 
 export default App
