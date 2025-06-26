@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ProjectCard from './ProjectCard';
-
+import SectionLine from './SectionLine';
 const ProjectCarousel = ({ projects }) => {
   const paddedProjects = [{}, {}, ...projects,{}, {}];
   const EMPTY_COUNT = 2; // empty cards at start and end
@@ -125,6 +125,7 @@ const ProjectCarousel = ({ projects }) => {
           tabIndex={0}
         />
       </div>
+      <SectionLine />
     </div>
   );
 };
