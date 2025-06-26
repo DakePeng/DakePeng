@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react';
 import ProjectCard from './ProjectCard';
 
 const ProjectCarousel = ({ projects }) => {
-  projects = [{}, {}, ...projects,{}, {}];
+  const paddedProjects = [{}, {}, ...projects,{}, {}];
   const EMPTY_COUNT = 2; // empty cards at start and end
-  const visibleProjects = projects.slice(EMPTY_COUNT, projects.length - EMPTY_COUNT);
+  const visibleProjects = paddedProjects.slice(EMPTY_COUNT, paddedProjects.length - EMPTY_COUNT);
   const [centerIndex, setCenterIndex] = useState(EMPTY_COUNT);
   const barRef = useRef(null);
   const dragging = React.useRef(false);
@@ -88,7 +88,14 @@ const ProjectCarousel = ({ projects }) => {
                 transformOrigin: 'center bottom',
                 transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
               }}
-              onClick={() => setCenterIndex(index)}
+              onClick={() => {
+                // if the project is clicked, open the link; otherwise, set the center index
+                if (index === centerIndex && project?.link) {
+                  window.open(project.link, '_blank');
+                } else {
+                  setCenterIndex(index);
+                }
+              }}
             >
               <ProjectCard {...project} />
             </div>
