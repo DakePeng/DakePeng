@@ -1,35 +1,45 @@
 import React, { useRef, useEffect, useState } from 'react';
 import CoverPic from '../assets/Cover.jpg';
 
-const CoverScreen = ({ coverImg }) => {
+const CoverScreen = ({ coverImg = CoverPic }) => {
   const textRef = useRef(null);
-  const [textHeight, setTextHeight] = useState(0);
+  const [imageHeight, setImageHeight] = useState('auto');
 
   useEffect(() => {
-    if (textRef.current) {
-      setTextHeight(textRef.current.offsetHeight);
-    }
+    const updateHeights = () => {
+      const isDesktop = window.innerWidth >= 768;
+      if (isDesktop && textRef.current) {
+        setImageHeight(`${textRef.current.offsetHeight}px`);
+      } else {
+        setImageHeight('auto');
+      }
+    };
+
+    updateHeights(); // run on mount
+    window.addEventListener('resize', updateHeights);
+    return () => window.removeEventListener('resize', updateHeights);
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row mt-32 p-8 w-2/3 mx-auto items-start">
-      
-      {/* Image container with height equal to text */}
-      <div className="md:w-3/5 flex-shrink-0" style={{ height: textHeight || 'auto' }}>
+    <div className="flex flex-col md:flex-row mt-28 md:mt-32 px-4 md:px-8 w-full max-w-6xl mx-auto items-start gap-6">
+      {/* Image container */}
+      <div
+        className="w-full md:w-3/5 overflow-hidden rounded-lg"
+        style={{ height: imageHeight }}
+      >
         <img
           src={coverImg}
           alt="Cover"
-          className="rounded-lg object-cover w-full h-full"
-          style={{ objectPosition: 'bottom right' }}
+          className="object-cover w-full h-full object-bottom"
         />
       </div>
 
       {/* Text container */}
       <div
         ref={textRef}
-        className="md:w-2/5 w-full flex flex-col justify-center items-start md:ml-8"
+        className="w-full md:w-2/5 flex flex-col justify-center items-start"
       >
-        <h1 className="text-[8rem] md:text-[12rem] font-extrabold leading-none select-none break-words text-left w-full -ml-[4px]">
+        <h1 className="text-7xl md:text-7xl lg:text-[8rem] xl:text-[10rem] font-extrabold leading-none select-none break-words text-left w-full">
           Hey, It's Dake
         </h1>
         <p className="mt-4 text-base text-left w-full">
@@ -38,10 +48,6 @@ const CoverScreen = ({ coverImg }) => {
       </div>
     </div>
   );
-};
-
-CoverScreen.defaultProps = {
-  coverImg: CoverPic,
 };
 
 export default CoverScreen;
