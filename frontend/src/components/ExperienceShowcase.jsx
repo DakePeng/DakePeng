@@ -16,7 +16,7 @@ const ExperienceShowcase = ({experiences, cvLink}) => {
       <SectionHeader title={sectionTitle} description={sectionDescription}/>
       <div className="flex h-screen p-6 gap-4 max-h-[30rem] overflow-x-hidden">
         {/* Left column: fixed height to show exactly 5 cards and scroll */}
-        <div className="flex flex-col gap-4 w-1/3 overflow-y-auto max-h-[30rem] overflow-x-hidden">
+        <div className="flex flex-col gap-4 w-1/3 overflow-y-auto max-h-[30rem] overflow-x-hidden pr-4">
           {experiences.map((exp) => (
             <ExperienceCard
               key={exp.id}
@@ -34,9 +34,21 @@ const ExperienceShowcase = ({experiences, cvLink}) => {
         </div>
 
         {/* Right side - description box */}
-        <div className="flex-1 bg-white rounded-xl p-6 shadow-md max-h-full overflow-y-auto">
-          <h2 className="text-2xl font-bold mb-4">{selectedExperience.jobTitle}</h2>
-          <h3 className="text-xl text-gray-700 mb-2">{selectedExperience.company}</h3>
+        <div
+          className="
+            flex-1
+            bg-white
+            rounded-xl
+            p-6
+            shadow-md
+            max-h-[30rem]
+            overflow-y-auto
+            mt-4
+            md:mt-0
+          "
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">{selectedExperience.jobTitle}</h2>
+          <h3 className="text-xl md:text-2xl text-gray-700 mb-2">{selectedExperience.company}</h3>
           <p className="text-gray-500 mb-6">{selectedExperience.dateRange}</p>
           <p className="text-gray-800 whitespace-pre-line">{selectedExperience.description}</p>
         </div>
