@@ -30,7 +30,7 @@ const CoverScreen = ({ coverImg = CoverPic }) => {
         <img
           src={coverImg}
           alt="Cover"
-          className="object-cover w-full h-full object-bottom"
+          className="object-cover w-full h-full object-bottom object-right"
         />
       </div>
 
