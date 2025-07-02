@@ -44,7 +44,7 @@ export default function FloatingMenu({ menuItems }) {
 
 FloatingMenu.defaultProps = {
   menuItems: [
-    { label: "Intro", href: "#intro" },
+    { label: "Cover", href: "#cover" },
     { label: "Experience", href: "#experience" },
     { label: "Interests", href: "#interests" },
     { label: "Projects", href: "#projects" },
