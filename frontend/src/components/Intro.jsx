@@ -63,10 +63,7 @@ const Intro = ({coverImg, instagramUrl, linkedinUrl, email, discordUrl, introTex
     <section id="intro" className="max-w-6xl mx-auto px-6 scroll-mt-20">
       <div className="flex flex-col md:flex-row mt-28 md:mt-32 px-4 md:px-8 w-full max-w-6xl mx-auto items-start gap-6 lg:gap-12">
         {/* Image container */}
-        <div
-          className="w-full md:w-3/5 overflow-hidden rounded-lg"
-          style={{ height: imageHeight }}
-        >
+        <div className="w-full md:w-3/5 overflow-hidden rounded-lg aspect-square md:aspect-auto" style={{height: imageHeight }}>
           <img
             src={coverImg}
             alt="Cover"

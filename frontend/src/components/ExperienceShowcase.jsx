@@ -20,7 +20,7 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
   };
 
   return (
-    <section id="experience" className="max-w-6xl mx-auto px-6 scroll-mt-20 relative">
+    <section id="experience" className="max-w-6xl mx-auto sm:px-2 md:px-4 scroll-mt-20 relative">
       <SectionHeader title={sectionTitle} description={sectionDescription} />
 
       {/* Layout */}
