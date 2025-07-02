@@ -77,14 +77,14 @@ const Intro = ({coverImg, instagramUrl, linkedinUrl, email, discordUrl, introTex
         {/* Text container */}
         <div
           ref={textRef}
-          className="w-full md:w-2/5 flex flex-col justify-center items-start"
+          className="w-full md:w-2/5 flex  flex-col justify-center items-center md:items-start"
         >
-          <h1 className="text-6xl md:text-7xl lg:text-[8rem] xl:text-[10rem] font-extrabold leading-none select-none break-words text-left w-full">
+          <h1 className="text-5xl md:text-7xl lg:text-[8rem] xl:text-[10rem] font-extrabold leading-relaxed md:leading-none select-none break-words text-center md:text-left w-full">
             Hey, It's Dake
           </h1>
 
           {/* Icons container */}
-          <div className="mx-2 mt-6 flex space-x-8">
+          <div className="mx-2 mt-6 flex space-x-8 md:space-x-16">
             {icons.map(({ Component, urlProp, ariaLabel, hoverColor, isMailto }) => {
               const url = isMailto
                 ? `mailto:${email}`
@@ -103,7 +103,7 @@ const Intro = ({coverImg, instagramUrl, linkedinUrl, email, discordUrl, introTex
                   target={isMailto ? undefined : '_blank'}
                   rel={isMailto ? undefined : 'noopener noreferrer'}
                   aria-label={ariaLabel}
-                  className={`${hoverColor} transition-colors`}
+                  className={`${hoverColor} transition-color`}
                 >
                   <Component width={36} height={36} />
                 </a>
