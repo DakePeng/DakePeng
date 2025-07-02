@@ -17,7 +17,7 @@ app.use(express.json()); // to parse JSON bodies
 
 // Routes
 const experienceRoutes = require('./routes/experienceRoutes');
-app.use('/api/experience', experienceRoutes);
+app.use('/api/experiences', experienceRoutes);
 
 // Default route to check API status
 app.get('/', (req, res) => {
