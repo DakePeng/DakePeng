@@ -21,6 +21,7 @@ const CoverScreen = ({ coverImg = CoverPic }) => {
   }, []);
 
   return (
+    
     <div className="flex flex-col md:flex-row mt-28 md:mt-32 px-4 md:px-8 w-full max-w-6xl mx-auto items-start gap-6 lg: gap-12">
       {/* Image container */}
       <div

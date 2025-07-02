@@ -49,7 +49,7 @@ function SkillsSection() {
 
   return (
     <section
-      id="skills"
+      id="interests"
       ref={sectionRef}
       className="max-w-6xl mx-auto px-6 scroll-mt-20"
     >

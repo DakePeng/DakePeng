@@ -55,7 +55,7 @@ const ProjectCarousel = ({ projects }) => {
 
   return (
     <section 
-      id="interests"
+      id="projects"
       className="max-w-6xl mx-auto px-6 scroll-mt-20">
       <SectionHeader title={sectionTitle} description={sectionDescription}/>
       <div className="w-full max-w-[1600px] mx-auto select-none">

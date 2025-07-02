@@ -11,7 +11,7 @@ const ExperienceShowcase = ({experiences, cvLink}) => {
 
   return (
     <section 
-      id="interests"
+      id="experience"
       className="max-w-6xl mx-auto px-6 scroll-mt-20">
       <SectionHeader title={sectionTitle} description={sectionDescription}/>
       <div className="flex h-screen p-6 gap-4 max-h-[30rem] overflow-x-hidden">
