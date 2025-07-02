@@ -11,21 +11,21 @@ const ExperienceCard = ({ logo, jobTitle, company, dateRange, onClick }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)} 
       className={`
-        flex flex-col md:flex-row p-3 bg-white shadow-sm rounded-xl max-w-sm w-full
+        flex flex-row p-3 bg-white shadow-sm rounded-xl max-w-sm w-full
         cursor-pointer transition-transform duration-200 ease-in-out
-        ${isHovered ? 'shadow-lg scale-105' : 'shadow-sm'}
+        ${isHovered ? 'shadow-lg md:scale-105' : 'shadow-sm'}
       `}
     >
       <img
         src={logo}
         alt={`${company} logo`}
-        className="hidden md:block w-20 h-auto object-contain rounded-md mr-6"
+        className="w-20 h-auto object-contain rounded-md mr-6"
       />
 
       <div className="flex flex-col text-left max-w-full overflow-hidden">
         <h3 className="text-lg font-semibold text-gray-900 mb-1">{jobTitle}</h3>
         <p className="text-sm text-gray-500 mb-1">{company}</p>
-        <p className="hidden md:block text-sm text-gray-900 mb-1">{dateRange}</p>
+        <p className="text-sm text-gray-900 mb-1">{dateRange}</p>
       </div>
     </div>
   );
