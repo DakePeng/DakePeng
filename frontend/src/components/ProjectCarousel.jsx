@@ -1,31 +1,67 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import SectionHeader from './SectionHeader';
 import SectionLine from './SectionLine';
 
 const ProjectCarousel = ({ projects }) => {
-  const SIDE_COUNT = 2; // empty cards at start and end
-  const [centerIndex, setCenterIndex] = useState(SIDE_COUNT);
+  const [centerIndex, setCenterIndex] = useState(2); // default for desktop, will update with SIDE_COUNT
   const barRef = useRef(null);
   const dragging = React.useRef(false);
-  const fanStyles = [
+  const touchStartX = useRef(null);
+
+  // Detect mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // you can adjust breakpoint here
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // SIDE_COUNT based on mobile or desktop
+  const SIDE_COUNT = isMobile ? 1 : 2;
+
+  // Fan styles for 3 or 5 cards
+  const fanStylesDesktop = [
     { rotate: '-10deg', translateX: '-450px', scale: 0.7, zIndex: 1 },
     { rotate: '-5deg', translateX: '-225px', scale: 0.85, zIndex: 2 },
     { rotate: '0deg', translateX: '0px', scale: 1, zIndex: 3 },
     { rotate: '5deg', translateX: '225px', scale: 0.85, zIndex: 2 },
     { rotate: '10deg', translateX: '450px', scale: 0.7, zIndex: 1 },
   ];
-  const dotPositionPercent = (centerIndex / (projects.length - 1)) * 100;
+
+  const fanStylesMobile = [
+    { rotate: '-5deg', translateX: '-120px', scale: 0.8, zIndex: 1 },
+    { rotate: '0deg', translateX: '0px', scale: 1, zIndex: 2 },
+    { rotate: '5deg', translateX: '120px', scale: 0.8, zIndex: 1 },
+  ];
+
+  const fanStyles = isMobile ? fanStylesMobile : fanStylesDesktop;
+
+  // Clamp centerIndex within valid range
+  const maxIndex = projects.length - 1;
+  const clampIndex = (idx) => Math.min(maxIndex, Math.max(0, idx));
+
+  // Adjust centerIndex if projects or SIDE_COUNT changes
+  useEffect(() => {
+    setCenterIndex(clampIndex(SIDE_COUNT));
+  }, [SIDE_COUNT, projects.length]);
+
+  const dotPositionPercent = (centerIndex / maxIndex) * 100;
+
   const sectionTitle = 'Projects';
-  const sectionDescription = 'Explore a selection of my previous projects, showcasing creativity and technical skills across various domains.';
+  const sectionDescription =
+    'Explore a selection of my previous projects, showcasing creativity and technical skills across various domains.';
 
   const onBarClick = (e) => {
     if (!barRef.current) return;
     const rect = barRef.current.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const percent = clickX / rect.width;
-    const newCenterIndex = Math.round(percent * (projects.length - 1));
-    console.log('Clicked index:', newCenterIndex);
+    const newCenterIndex = Math.round(percent * maxIndex);
     setCenterIndex(newCenterIndex);
   };
 
@@ -36,7 +72,7 @@ const ProjectCarousel = ({ projects }) => {
     if (newX < 0) newX = 0;
     if (newX > rect.width) newX = rect.width;
     const percent = newX / rect.width;
-    const newCenterIndex = Math.round(percent * (projects.length - 1));
+    const newCenterIndex = Math.round(percent * maxIndex);
     setCenterIndex(newCenterIndex);
   };
 
@@ -53,16 +89,40 @@ const ProjectCarousel = ({ projects }) => {
     window.addEventListener('mouseup', onMouseUp);
   };
 
+  // Touch handlers for swipe
+  const onTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diffX = touchEndX - touchStartX.current;
+
+    const swipeThreshold = 50; // minimum px to count as swipe
+    if (diffX > swipeThreshold) {
+      // swipe right -> move carousel left (decrement centerIndex)
+      setCenterIndex((prev) => clampIndex(prev - 1));
+    } else if (diffX < -swipeThreshold) {
+      // swipe left -> move carousel right (increment centerIndex)
+      setCenterIndex((prev) => clampIndex(prev + 1));
+    }
+    touchStartX.current = null;
+  };
+
   return (
-    <section 
-      id="projects"
-      className="max-w-6xl mx-auto px-6 scroll-mt-20">
-      <SectionHeader title={sectionTitle} description={sectionDescription}/>
-      <div className="w-full max-w-[1600px] mx-auto select-none">
+    <section id="projects" className="max-w-6xl mx-auto px-6 scroll-mt-20">
+      <SectionHeader title={sectionTitle} description={sectionDescription} />
+      <div
+        className="w-full max-w-[1600px] mx-auto select-none"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {/* Carousel container */}
         <div className="relative h-[400px] overflow-visible">
           {projects.map((project, index) => {
-            if (index > centerIndex + SIDE_COUNT || index < centerIndex - SIDE_COUNT) return null;
+            if (index > centerIndex + SIDE_COUNT || index < centerIndex - SIDE_COUNT)
+              return null;
             const tempIndex = index - centerIndex + SIDE_COUNT;
             const style = fanStyles[tempIndex];
             const isCenter = index === centerIndex;
@@ -87,13 +147,12 @@ const ProjectCarousel = ({ projects }) => {
                   transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
                 }}
                 onClick={() => {
-                // if the project is clicked, open the link; otherwise, set the center index
-                if (index === centerIndex && project?.link) {
-                  window.open(project.link, '_blank');
-                } else {
-                  setCenterIndex(index);
-                }
-              }}
+                  if (index === centerIndex && project?.link) {
+                    window.open(project.link, '_blank');
+                  } else {
+                    setCenterIndex(index);
+                  }
+                }}
               >
                 <ProjectCard {...project} />
               </div>
@@ -101,28 +160,31 @@ const ProjectCarousel = ({ projects }) => {
           })}
         </div>
 
-        {/* Bar dialer below the carousel */}
-        <div
-          ref={barRef}
-          onClick={onBarClick}
-          className="relative mt-8 w-80 h-5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full cursor-grab mx-auto"
-        >
-          {/* Draggable Dot */}
+        {/* Bar dialer below the carousel - hidden on mobile */}
+        {!isMobile && (
           <div
-            onMouseDown={onDotMouseDown}
-            className="absolute top-1/2 -translate-y-1/2 w-7 h-7 bg-white rounded-full shadow-lg cursor-grab border-4 border-blue-700"
-            style={{
-              left: `${dotPositionPercent}%`,
-              transform: 'translateX(-50%)',
-              transition: dragging.current ? 'none' : 'left 300ms ease-in-out',
-            }}
-            role="slider"
-            aria-valuemin={0}
-            aria-valuemax={projects.length - 1}
-            aria-valuenow={centerIndex}
-            tabIndex={0}
-          />
-        </div>
+            ref={barRef}
+            onClick={onBarClick}
+            className="relative mt-8 w-80 h-5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full cursor-grab mx-auto"
+          >
+            {/* Draggable Dot */}
+            <div
+              onMouseDown={onDotMouseDown}
+              className="absolute top-1/2 -translate-y-1/2 w-7 h-7 bg-white rounded-full shadow-lg cursor-grab border-4 border-blue-700"
+              style={{
+                left: `${dotPositionPercent}%`,
+                transform: 'translateX(-50%)',
+                transition: dragging.current ? 'none' : 'left 300ms ease-in-out',
+              }}
+              role="slider"
+              aria-valuemin={0}
+              aria-valuemax={maxIndex}
+              aria-valuenow={centerIndex}
+              tabIndex={0}
+            />
+          </div>
+        )}
+
         {/* View All Link */}
         <div className="mt-16 text-center">
           <a
