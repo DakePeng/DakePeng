@@ -14,7 +14,6 @@ connectDB();
 // Path to your TSV file
 const filePath = path.join(__dirname, '../Experiences.tsv');
 
-// Read TSV file and parse
 fs.readFile(filePath, 'utf8', (err, data) => {
   if (err) {
     console.error('Error reading TSV:', err);
@@ -26,10 +25,23 @@ fs.readFile(filePath, 'utf8', (err, data) => {
     delimiter: '\t',
     complete: async (results) => {
       try {
-        // Insert parsed data into MongoDB
-        await Experience.insertMany(results.data);
-        console.log('✅ Data imported successfully');
-        process.exit();
+        const validData = results.data.filter(
+          row => Object.values(row).some(value => value && value.trim() !== '')
+        );
+
+        if (validData.length === 0) {
+          console.log('No valid data to import.');
+          process.exit(0);
+        }
+
+        // Clear the collection first
+        await Experience.deleteMany({});
+        console.log('✅ Cleared existing data');
+
+        // Insert new data
+        const insertedDocs = await Experience.insertMany(validData);
+        console.log(`✅ Data imported successfully. Inserted ${insertedDocs.length} records.`);
+        process.exit(0);
       } catch (error) {
         console.error('❌ Error inserting into DB:', error);
         process.exit(1);
