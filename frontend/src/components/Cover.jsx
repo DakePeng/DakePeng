@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import CoverPic from '../assets/Cover.jpg';
+import SectionLine from './SectionLine';
 
 const CoverScreen = ({ coverImg = CoverPic }) => {
   const textRef = useRef(null);
@@ -21,33 +22,37 @@ const CoverScreen = ({ coverImg = CoverPic }) => {
   }, []);
 
   return (
-    
-    <div className="flex flex-col md:flex-row mt-28 md:mt-32 px-4 md:px-8 w-full max-w-6xl mx-auto items-start gap-6 lg: gap-12">
-      {/* Image container */}
-      <div
-        className="w-full md:w-3/5 overflow-hidden rounded-lg"
-        style={{ height: imageHeight }}
-      >
-        <img
-          src={coverImg}
-          alt="Cover"
-          className="object-cover w-full h-full object-bottom object-right"
-        />
-      </div>
+    <section 
+      id="cover"
+      className="max-w-6xl mx-auto px-6 scroll-mt-20">
+      <div className="flex flex-col md:flex-row mt-28 md:mt-32 px-4 md:px-8 w-full max-w-6xl mx-auto items-start gap-6 lg: gap-12">
+        {/* Image container */}
+        <div
+          className="w-full md:w-3/5 overflow-hidden rounded-lg"
+          style={{ height: imageHeight }}
+        >
+          <img
+            src={coverImg}
+            alt="Cover"
+            className="object-cover w-full h-full object-bottom object-right"
+          />
+        </div>
 
-      {/* Text container */}
-      <div
-        ref={textRef}
-        className="w-full md:w-2/5 flex flex-col justify-center items-start"
-      >
-        <h1 className="text-6xl md:text-7xl lg:text-[8rem] xl:text-[10rem] font-extrabold leading-none select-none break-words text-left w-full">
-          Hey, It's Dake
-        </h1>
-        <p className="mt-6 text-xl text-left w-full">
-          I'm a software engineer with a passion for building innovative solutions. I love tackling complex problems and creating user-friendly applications.
-        </p>
+        {/* Text container */}
+        <div
+          ref={textRef}
+          className="w-full md:w-2/5 flex flex-col justify-center items-start"
+        >
+          <h1 className="text-6xl md:text-7xl lg:text-[8rem] xl:text-[10rem] font-extrabold leading-none select-none break-words text-left w-full">
+            Hey, It's Dake
+          </h1>
+          <p className="mt-6 text-xl text-left w-full">
+            I'm a software engineer with a passion for building innovative solutions. I love tackling complex problems and creating user-friendly applications.
+          </p>
+        </div>
       </div>
-    </div>
+      <SectionLine />
+    </section>
   );
 };
 
