@@ -15,12 +15,13 @@ class App extends React.Component {
       cvLink: "https://1drv.ms/w/c/e712a48a69688c8b/EavzYQEBp_tCuf8q8YW2eQkB7uuxwbeJupqLUEr7SKVnJg?e=9yQ09f",
       experiences: [],
       selectedExperience: {},
+      projects:[],
     };
   }
-
   componentDidMount() {
-    const url = 'http://localhost:5000/api/experiences';
-    axios.get(url)
+    const url = "http://localhost:5000/api"
+    const url_experience = url + '/experiences';
+    axios.get(url_experience)
       .then((response) => {
         const experiences = response.data;
         this.setState({
@@ -29,6 +30,16 @@ class App extends React.Component {
         });
       })
       .catch((error) => console.error("Error fetching experiences:", error));
+
+    const url_project = url + '/projects';
+    axios.get(url_project)
+      .then((response) => {
+        const projects = response.data;
+        this.setState({
+          projects: projects,
+        });
+      })
+      .catch((error) => console.error("Error fetching projects:", error));
   }
 
   handleExperienceSelect = (experience) => {
@@ -36,7 +47,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { experiences, selectedExperience, cvLink } = this.state;
+    const { experiences, projects, selectedExperience, cvLink } = this.state;
+    console.log(projects)
     return (
       <div className="mb-24">
         <Header />

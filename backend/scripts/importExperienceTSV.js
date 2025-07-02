@@ -12,7 +12,7 @@ dotenv.config();
 connectDB();
 
 // Path to your TSV file
-const filePath = path.join(__dirname, '../Experiences.tsv');
+const filePath = './assets/Experiences.tsv';
 
 fs.readFile(filePath, 'utf8', (err, data) => {
   if (err) {

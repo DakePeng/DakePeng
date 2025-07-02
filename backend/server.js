@@ -19,6 +19,10 @@ app.use(express.json()); // to parse JSON bodies
 const experienceRoutes = require('./routes/experienceRoutes');
 app.use('/api/experiences', experienceRoutes);
 
+const projectRoutes = require('./routes/projectRoutes');
+app.use('/api/projects', projectRoutes);
+
+
 // Default route to check API status
 app.get('/', (req, res) => {
   res.send('API is running...');
