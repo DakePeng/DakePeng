@@ -2,7 +2,7 @@ import ProjectCarousel from './ProjectCarousel.jsx'
 import Interests from './Interests.jsx'
 import Header from './Header.jsx'
 import ExperienceShowcase from './ExperienceShowcase.jsx' 
-import CoverScreen from './Cover.jsx'
+import Intro from './Intro.jsx'
 import FloatingMenu from './FloatingMenu.jsx'
 import Contact from './Contact.jsx'
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
     <div className="mb-24">
       <Header />
       <FloatingMenu {...FloatingMenu.defaultProps}/>
-      <CoverScreen {...CoverScreen.defaultProps}/>
+      <Intro {...Intro.defaultProps}/>
       <ExperienceShowcase {...ExperienceShowcase.defaultProps} />
       <Interests />
       <ProjectCarousel {...ProjectCarousel.defaultProps} />
