@@ -46,7 +46,6 @@ class App extends React.Component {
         });
       })
       .catch((error) => console.error("Error fetching projects:", error));
-      console.log(this.state.experience, this.state.projects)
   }
 
   handleExperienceSelect = (experience) => {
