@@ -23,7 +23,7 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
     <section id="experience" className="max-w-6xl mx-auto scroll-mt-20 relative">
       <SectionHeader title={sectionTitle} description={sectionDescription} />
       {/* Layout */}
-      <div className="flex flex-col md:flex-row h-full md:p-6 gap-4">
+      <div className="flex flex-col md:flex-row h-full p-4 md:p-6 gap-4">
         {/* Left: Experience Cards */}
         <div className="flex flex-col gap-4 w-full items-center md:items-start w-full md:w-1/3 md:overflow-y-auto md:max-h-[32rem] overflow-x-hidden md:pr-4">
           {sortedExperiences.length > 0 ? (

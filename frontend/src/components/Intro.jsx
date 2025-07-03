@@ -86,8 +86,6 @@ const Intro = ({coverImg, instagramUrl, linkedinUrl, email, discordUrl, introTex
                 ? instagramUrl
                 : urlProp === 'linkedinUrl'
                 ? linkedinUrl
-                : urlProp === 'discordUrl'
-                ? discordUrl
                 : '#';
 
               return (
