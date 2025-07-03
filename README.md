@@ -1,4 +1,4 @@
-## Hi there 👋
+## Hey From Dake!
 
 I'm Dake Peng, a Computer Science and Cognitive Science major from Carleton College.
 
