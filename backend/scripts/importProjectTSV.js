@@ -1,15 +1,25 @@
 const fs = require('fs');
-const path = require('path');
 const Papa = require('papaparse');
 const dotenv = require('dotenv');
-const connectDB = require('../config/db');
+const {connectDB} = require('../config/db');
 const Project = require('../models/Project');
 
 // Load env vars
 dotenv.config();
 
-// Connect to DB
-connectDB();
+const PORT = process.env.PORT || 5000;
+
+// Connect to DB, then start server
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to connect to DB, server not started:', err);
+  });
+
 
 // Path to your TSV file
 const filePath = './assets/Projects.tsv';
