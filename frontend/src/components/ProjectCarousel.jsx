@@ -4,7 +4,8 @@ import SectionHeader from './SectionHeader';
 import SectionLine from './SectionLine';
 
 const ProjectCarousel = ({ projects }) => {
-  const [centerIndex, setCenterIndex] = useState(2); // default for desktop, will update with SIDE_COUNT
+  const [centerIndex, setCenterIndex] = useState(2); // default for desktop, updated with SIDE_COUNT
+  const [animating, setAnimating] = useState(null); // null | 'left' | 'right' for mobile slide animation
   const barRef = useRef(null);
   const dragging = React.useRef(false);
   const touchStartX = useRef(null);
@@ -14,7 +15,7 @@ const ProjectCarousel = ({ projects }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // you can adjust breakpoint here
+      setIsMobile(window.innerWidth < 768); // breakpoint can be adjusted
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -33,21 +34,13 @@ const ProjectCarousel = ({ projects }) => {
     { rotate: '10deg', translateX: '450px', scale: 0.7, zIndex: 1 },
   ];
 
-  const fanStylesMobile = [
-    { rotate: '-5deg', translateX: '-120px', scale: 0.8, zIndex: 1 },
-    { rotate: '0deg', translateX: '0px', scale: 1, zIndex: 2 },
-    { rotate: '5deg', translateX: '120px', scale: 0.8, zIndex: 1 },
-  ];
-
-  const fanStyles = isMobile ? fanStylesMobile : fanStylesDesktop;
-
   // Clamp centerIndex within valid range
   const maxIndex = projects.length - 1;
   const clampIndex = (idx) => Math.min(maxIndex, Math.max(0, idx));
 
   // Adjust centerIndex if projects or SIDE_COUNT changes
   useEffect(() => {
-    setCenterIndex(clampIndex(SIDE_COUNT));
+    setCenterIndex((prev) => clampIndex(SIDE_COUNT));
   }, [SIDE_COUNT, projects.length]);
 
   const dotPositionPercent = (centerIndex / maxIndex) * 100;
@@ -89,7 +82,7 @@ const ProjectCarousel = ({ projects }) => {
     window.addEventListener('mouseup', onMouseUp);
   };
 
-  // Touch handlers for swipe
+  // Touch handlers for swipe (desktop only)
   const onTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -110,6 +103,25 @@ const ProjectCarousel = ({ projects }) => {
     touchStartX.current = null;
   };
 
+  // --- Mobile sliding animation handlers ---
+  const handleNext = () => {
+    if (centerIndex >= maxIndex || animating) return;
+    setAnimating('right');
+    setTimeout(() => {
+      setCenterIndex((prev) => clampIndex(prev + 1));
+      setAnimating(null);
+    }, 300); // duration should match CSS transition
+  };
+
+  const handlePrev = () => {
+    if (centerIndex <= 0 || animating) return;
+    setAnimating('left');
+    setTimeout(() => {
+      setCenterIndex((prev) => clampIndex(prev - 1));
+      setAnimating(null);
+    }, 300);
+  };
+
   return (
     <section id="projects" className="max-w-6xl mx-auto px-6 scroll-mt-20">
       <SectionHeader title={sectionTitle} description={sectionDescription} />
@@ -118,48 +130,86 @@ const ProjectCarousel = ({ projects }) => {
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {/* Carousel container */}
-        <div className="relative h-[400px] overflow-visible">
-          {projects.map((project, index) => {
-            console.log(project)
-            if (index > centerIndex + SIDE_COUNT || index < centerIndex - SIDE_COUNT)
-              return null;
-            const tempIndex = index - centerIndex + SIDE_COUNT;
-            const style = fanStyles[tempIndex];
-            const isCenter = index === centerIndex;
+        {/* --- MOBILE VERSION --- */}
+        {isMobile ? (
+          <div className="relative w-full max-w-xs mx-auto h-[400px] flex items-center justify-center">
+            {/* Left Arrow */}
+            <button
+              onClick={handlePrev}
+              disabled={centerIndex === 0 || animating}
+              className="absolute left-[-20px] z-10 inline-block px-4 py-2 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Previous Project"
+            >
+              {'<'}
+            </button>
 
-            return (
-              <div
-                key={project._id}
-                className={`
-                  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                  transition-all duration-500 ease-in-out 
-                  cursor-pointer 
-                  ${isCenter ? 'opacity-100 scale-100' : 'opacity-50'}
-                `}
-                style={{
-                  transform: `
-                    translateX(${style.translateX}) 
-                    rotate(${style.rotate}) 
-                    scale(${style.scale})
-                  `,
-                  zIndex: style.zIndex,
-                  transformOrigin: 'center bottom',
-                  transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
-                }}
-                onClick={() => {
-                  if (index === centerIndex && project?.postLink) {
-                    window.open(project.postLink);
-                  } else {
-                    setCenterIndex(index);
-                  }
-                }}
-              >
-                <ProjectCard {...project} />
-              </div>
-            );
-          })}
-        </div>
+            {/* Project Card with slide animation */}
+            <div
+              className={`
+                w-full
+                transition-transform duration-300 ease-in-out
+                ${animating === 'left' ? '-translate-x-full opacity-0' : ''}
+                ${animating === 'right' ? 'translate-x-full opacity-0' : ''}
+                ${animating === null ? 'translate-x-0 opacity-100' : ''}
+              `}
+              style={{ padding: '0 40px' }} // add horizontal padding to prevent overlap
+            >
+              {projects[centerIndex] && <ProjectCard {...projects[centerIndex]} />}
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={handleNext}
+              disabled={centerIndex === maxIndex || animating}
+              className="absolute right-[-20px] z-10 inline-block px-4 py-2 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Next Project"
+            >
+              {'>'}
+            </button>
+          </div>
+        ) : (
+          // --- DESKTOP CAROUSEL ---
+          <div className="relative h-[400px] overflow-visible">
+            {projects.map((project, index) => {
+              if (index > centerIndex + SIDE_COUNT || index < centerIndex - SIDE_COUNT)
+                return null;
+              const tempIndex = index - centerIndex + SIDE_COUNT;
+              const style = fanStylesDesktop[tempIndex];
+              const isCenter = index === centerIndex;
+
+              return (
+                <div
+                  key={project._id}
+                  className={`
+                    absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                    transition-all duration-500 ease-in-out 
+                    cursor-pointer 
+                    ${isCenter ? 'opacity-100 scale-100' : 'opacity-50'}
+                  `}
+                  style={{
+                    transform: `
+                      translateX(${style.translateX}) 
+                      rotate(${style.rotate}) 
+                      scale(${style.scale})
+                    `,
+                    zIndex: style.zIndex,
+                    transformOrigin: 'center bottom',
+                    transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+                  }}
+                  onClick={() => {
+                    if (index === centerIndex && project?.postLink) {
+                      window.open(project.postLink);
+                    } else {
+                      setCenterIndex(index);
+                    }
+                  }}
+                >
+                  <ProjectCard {...project} />
+                </div>
+              );
+            })}
+          </div>
+        )}
 
         {/* Bar dialer below the carousel - hidden on mobile */}
         {!isMobile && (
@@ -186,15 +236,6 @@ const ProjectCarousel = ({ projects }) => {
           </div>
         )}
 
-        {/* View All Link */}
-        {/* <div className="mt-16 text-center">
-          <a
-            href="#projects"
-            className="inline-block px-4 py-2 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"
-          >
-            View All Projects
-          </a>
-        </div> */}
         <SectionLine />
       </div>
     </section>
