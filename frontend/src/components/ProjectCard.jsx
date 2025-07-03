@@ -1,7 +1,7 @@
 const ProjectCard = (props) => {
   return (
     <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">
-      <img className="w-full h-48 object-cover" src={props.image} alt={props.title} />
+      <img className="w-full h-48 object-cover" src={props.coverImg} alt={props.title} />
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">{props.title}</h2>
 
@@ -20,9 +20,9 @@ const ProjectCard = (props) => {
 
         <p className="text-gray-600 mt-3 text-sm">{props.description}</p>
 
-        {props.link && (
+        {props.hasPost && (
           <a
-            href={props.link}
+            href={props.postLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-4 text-blue-600 hover:text-blue-800 text-sm font-medium"

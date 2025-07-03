@@ -48,7 +48,6 @@ class App extends React.Component {
 
   render() {
     const { experiences, projects, selectedExperience, cvLink } = this.state;
-    console.log(projects)
     return (
       <div className="mb-24">
         <Header />
@@ -61,7 +60,7 @@ class App extends React.Component {
           cvLink={cvLink}
         />
         <Interests />
-        <ProjectCarousel {...ProjectCarousel.defaultProps} />
+        <ProjectCarousel projects={projects} />
         <Contact />
       </div>
     );
