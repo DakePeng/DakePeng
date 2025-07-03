@@ -19,7 +19,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    const url = "http://localhost:5000"
+    const url = " https://dakepeng.onrender.com"
     const url_experience = url + '/api/experiences';
     axios.get(url_experience)
       .then((response) => {
