@@ -16,6 +16,12 @@ class App extends React.Component {
       experiences: [],
       selectedExperience: {},
       projects:[],
+      coverImg : "https://dakepengportfolio.s3.us-east-2.amazonaws.com/Cover.jpg",
+      instagramUrl : 'https://www.instagram.com/dake.peng/',
+      linkedinUrl : 'https://www.linkedin.com/in/kunzhi-peng-308909278/',
+      email : 'dake20022@gmail.com',
+      introText : 'I am a software engineer with a passion for building innovative solutions. I love coding, exploring new technologies, and creating impactful projects. In my free time, I enjoy hiking, reading, and playing video games.',
+
     };
   }
   componentDidMount() {
@@ -51,8 +57,15 @@ class App extends React.Component {
     return (
       <div className="mb-24">
         <Header />
-        <FloatingMenu {...FloatingMenu.defaultProps} />
-        <Intro {...Intro.defaultProps} />
+        {/* <FloatingMenu {...FloatingMenu.defaultProps} /> */}
+        <Intro 
+          coverImg = {this.state.coverImg}
+          instagramUrl = {this.state.instagramUrl}
+          linkedinUrl = {this.state.linkedinUrl}
+          email = {this.state.email}
+          discordUrl = {this.state.discordUrl}
+          introText = {this.state.introText}
+        />
         <ExperienceShowcase
           experiences={experiences}
           selectedExperience={selectedExperience}

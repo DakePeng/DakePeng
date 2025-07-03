@@ -22,13 +22,7 @@ const icons = [
     urlProp: 'instagramUrl',
     ariaLabel: 'Instagram',
     hoverColor: 'hover:text-pink-500',
-  },
-  {
-    Component: Discord,
-    urlProp: 'discordUrl',
-    ariaLabel: 'Discord',
-    hoverColor: 'hover:text-indigo-600',
-  },
+  }
 ];
 
 const Intro = ({coverImg, instagramUrl, linkedinUrl, email, discordUrl, introText}) => {
@@ -118,16 +112,6 @@ const Intro = ({coverImg, instagramUrl, linkedinUrl, email, discordUrl, introTex
       <SectionLine />
     </section>
   );
-}
-
-import CoverPic from '../assets/Cover.jpg';
-Intro.defaultProps = {
-  coverImg : CoverPic,
-  instagramUrl : 'https://instagram.com/yourusername',
-  linkedinUrl : 'https://linkedin.com/in/yourusername',
-  email : 'your.email@example.com',
-  discordUrl : 'https://discord.gg/yourserver',
-  introText : 'I am a software engineer with a passion for building innovative solutions. I love coding, exploring new technologies, and creating impactful projects. In my free time, I enjoy hiking, reading, and playing video games.',
 }
 
 export default Intro;

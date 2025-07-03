@@ -31,14 +31,4 @@ const ExperienceCard = ({ logo, jobTitle, company, dateRange, onClick }) => {
   );
 };
 
-import CarletonLogo from '../assets/Carleton_Logo.png';
-ExperienceCard.defaultProps = {
-  logo: CarletonLogo,
-  jobTitle: 'Software Engineer',
-  company: 'Tech Company',
-  dateRange: 'Jan 2020 - Present',
-  description: 'Developing innovative software solutions.',
-  onClick: () => console.log('Experience Card Clicked'),
-};
-
 export default ExperienceCard;
