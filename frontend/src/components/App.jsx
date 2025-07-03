@@ -19,8 +19,8 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    const url = "http://localhost:5000/api"
-    const url_experience = url + '/experiences';
+    const url = "http://localhost:5000"
+    const url_experience = url + '/api/experiences';
     axios.get(url_experience)
       .then((response) => {
         const experiences = response.data;
@@ -31,7 +31,7 @@ class App extends React.Component {
       })
       .catch((error) => console.error("Error fetching experiences:", error));
 
-    const url_project = url + '/projects';
+    const url_project = url + '/api/projects';
     axios.get(url_project)
       .then((response) => {
         const projects = response.data;
