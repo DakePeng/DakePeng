@@ -25,7 +25,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    const url = "localhost:5000"
+    const url = "3.135.208.214:5000"
     const url_experience = url + '/api/experiences';
     axios.get(url_experience)
       .then((response) => {
