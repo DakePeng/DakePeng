@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cvLink: "https://1drv.ms/w/c/e712a48a69688c8b/EavzYQEBp_tCuf8q8YW2eQkB7uuxwbeJupqLUEr7SKVnJg?e=9yQ09f",
+      cvLink: "https://dakepengportfolio.s3.us-east-2.amazonaws.com/Kunzhi+(Dake)+Peng+Resume.docx",
       experiences: [],
       selectedExperience: {},
       projects:[],
