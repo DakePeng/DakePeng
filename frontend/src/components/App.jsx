@@ -25,7 +25,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    const url = "http://ec2-3-143-219-82.us-east-2.compute.amazonaws.com:5000"
+    const url = "https://dakepeng-backend.onrender.com/"
     const url_experience = url + '/api/experiences';
     axios.get(url_experience)
       .then((response) => {
