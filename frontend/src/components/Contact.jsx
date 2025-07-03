@@ -28,7 +28,7 @@ export default function Contact() {
                     name="message"
                     rows="5"
                     placeholder="Your Message"
-                    className="w-full border border-gray-300 p-4 mb-18 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-300 p-4 mb-16 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                 ></textarea>
                 <button
