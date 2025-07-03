@@ -8,8 +8,13 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || 'https://dakepeng.onrender.com/',
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // Routes
@@ -35,7 +40,3 @@ connectDB()
   .catch((err) => {
     console.error('Failed to connect to DB, server not started:', err);
   });
-
-app.listen(5000, '0.0.0.0', () => {
-  console.log('Server running on port 5000');
-});
