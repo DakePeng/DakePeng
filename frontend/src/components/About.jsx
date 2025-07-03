@@ -25,17 +25,17 @@ export default function AboutSection() {
 
             <div className="text-sm text-gray-500 mt-12">
                 <a
-                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:underline"
+                    href="https://opensource.org/licenses/MIT"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:underline"
                 >
-                <img
-                    src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png"
-                    alt="Creative Commons License"
-                    className="h-6"
-                />
-                Licensed under CC BY-NC-SA 4.0
+                    <img
+                        src="https://img.shields.io/badge/License-MIT-yellow.svg"
+                        alt="MIT License"
+                        className="h-6"
+                    />
+                    Licensed under MIT License
                 </a>
             </div>
         </section>
