@@ -7,7 +7,7 @@ import ExperienceShowcase from './ExperienceShowcase.jsx';
 import Intro from './Intro.jsx';
 import FloatingMenu from './FloatingMenu.jsx';
 import Contact from './Contact.jsx';
-
+import About from './About.jsx'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -62,6 +62,7 @@ class App extends React.Component {
         <Interests />
         <ProjectCarousel projects={projects} />
         <Contact />
+        <About />
       </div>
     );
   }

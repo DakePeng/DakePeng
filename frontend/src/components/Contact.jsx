@@ -1,4 +1,5 @@
 import SectionHeader from "./SectionHeader";
+import SectionLine from "./SectionLine";
 export default function Contact() {
     const sectionTitle = "Get in Touch"
     const sectionDescription = "Have a question, project, or just want to say hi? Drop me a message!"
@@ -38,6 +39,7 @@ export default function Contact() {
             </button>
             </form>
         </div>
+        <SectionLine />
         </section>
     );
     }
