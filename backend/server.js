@@ -35,3 +35,7 @@ connectDB()
   .catch((err) => {
     console.error('Failed to connect to DB, server not started:', err);
   });
+
+app.listen(5000, '0.0.0.0', () => {
+  console.log('Server running on port 5000');
+});

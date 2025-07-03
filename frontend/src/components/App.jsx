@@ -25,7 +25,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    const url = " https://dakepeng.onrender.com"
+    const url = "http://ec2-3-143-219-82.us-east-2.compute.amazonaws.com:5000"
     const url_experience = url + '/api/experiences';
     axios.get(url_experience)
       .then((response) => {
@@ -46,6 +46,7 @@ class App extends React.Component {
         });
       })
       .catch((error) => console.error("Error fetching projects:", error));
+      console.log(this.state.experience, this.state.projects)
   }
 
   handleExperienceSelect = (experience) => {
