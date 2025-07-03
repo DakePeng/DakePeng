@@ -6,4 +6,4 @@ I’m interested in Software Engineering, Continental Philsoophy, Embodied Cogni
 
 I am experienced in full-stack development and project management.
 
-I'm devoted to use the power of programming & data to solve issues in cognitive science research.
+I'm devoted to use the power of programming & data to solve issues in research.
