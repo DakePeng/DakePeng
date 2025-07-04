@@ -8,10 +8,22 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  `${process.env.FRONTENDLINK}`,
+  `http://localhost:${process.env.FRONTENDPORT}`,
+  `http://${process.env.EC2_PUBLIC_IP}`, // Only if accessing via IP
+];
+
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || 'https://dakepeng.onrender.com/',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   optionsSuccessStatus: 200
-}
+};
 
 app.use(cors(corsOptions));
 

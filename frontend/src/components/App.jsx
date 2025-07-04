@@ -8,6 +8,8 @@ import Intro from './Intro.jsx';
 import FloatingMenu from './FloatingMenu.jsx';
 import Contact from './Contact.jsx';
 import About from './About.jsx'
+import {BACKEND_URL} from '../config.js'
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    const url = "3.135.208.214:5000"
+    const url = BACKEND_URL;
     const url_experience = url + '/api/experiences';
     axios.get(url_experience)
       .then((response) => {
