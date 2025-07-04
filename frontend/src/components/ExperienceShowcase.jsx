@@ -70,21 +70,36 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
 
         {/* Mobile Overlay */}
         {showMobileDetail && selectedExperience && (
-          <div className="fixed inset-0 z-50 bg-white md:p-6 overflow-y-auto md:hidden">
+          <div className="fixed inset-0 z-50 bg-white p-4 md:p-6 overflow-y-auto md:hidden">
             <button
               onClick={handleBack}
+              aria-label="Go back"
               className="mb-4 text-sm text-blue-700 border border-blue-700 rounded-full px-4 py-1 hover:bg-blue-700 cursor-pointer hover:text-white transition"
             >
               ← Back
             </button>
-            <h2 className="text-2xl font-bold mb-2">{selectedExperience.jobTitle}</h2>
-            <h3 className="text-xl text-gray-700 mb-1">{selectedExperience.company}</h3>
+            <h2 className="text-2xl font-bold mb-2">
+              {selectedExperience.jobTitle}
+            </h2>
+            <h3 className="text-xl text-gray-700 mb-1">
+              {selectedExperience.company}
+            </h3>
             <p className="text-gray-500 mb-4">{selectedExperience.dateRange}</p>
             <ul className="list-disc list-inside space-y-2 text-gray-800">
-                {selectedExperience.description? selectedExperience.description.split("\\n").map((line, idx) =>
-                  <li className="text-gray-800 whitespace-pre-line" key = {idx}> {line} </li>
-                ): ""}
-              </ul>
+              {selectedExperience.description
+                ? selectedExperience.description
+                    .replace(/\\n/g, "\n")
+                    .split("\n")
+                    .map((line, idx) => (
+                      <li
+                        className="text-gray-800 whitespace-pre-line"
+                        key={idx}
+                      >
+                        {line}
+                      </li>
+                    ))
+                : null}
+            </ul>
           </div>
         )}
       </div>
