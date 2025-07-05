@@ -141,3 +141,6 @@ vite.config.ts.timestamp-*
 # SSH key
 
 *.pem
+
+# Google service account key 
+*key.json

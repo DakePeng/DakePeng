@@ -36,6 +36,9 @@ app.use('/api/experiences', experienceRoutes);
 const projectRoutes = require('./routes/projectRoutes');
 app.use('/api/projects', projectRoutes);
 
+const contactRoute = require("./routes/contactRoutes");
+app.use("/api/contact", contactRoute);
+
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
