@@ -15,9 +15,9 @@ export default function Header() {
           <a href="#projects" className="text-gray-700 hover:text-blue-600">Projects</a>
           <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
         </nav> */}
-        <button onClick={toggleMenu} className="md:hidden text-gray-700">
+        {/* <button onClick={toggleMenu} className="md:hidden text-gray-700">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        </button> */}
       </div>
       {isOpen && (
         <div className="md:hidden px-4 pb-4">

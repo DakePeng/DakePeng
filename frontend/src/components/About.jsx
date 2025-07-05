@@ -7,7 +7,7 @@ export default function AboutSection() {
     const sectionTitle = "About This Website"
     const sectionDescription = ""
     return (
-        <section className="max-w-3xl mx-auto p-6 text-center space-y-6">
+        <section id="about" className="max-w-3xl mx-auto p-6 text-center space-y-6">
             <SectionHeader title={sectionTitle} description={sectionDescription} />
             <p>This website is built using the <b>MERN</b> (MongoDB, Express.js, React.js, Node.js) stack, using <b>Tailwind CSS</b>, and deployed with <b>AWS EC2</b>, using <b>nginx</b>. The contact form gets converted to an email to my personal address, realized with <b>Google Cloud</b>. Relevant images and files are stored on <b>Amazon S3</b> and <b>Mongo Atlas</b>. The learning and building processes are accelerated with <b>engineered prompts</b> with the help of <b>ChatGPT</b>.</p>
             <div className="flex justify-center items-center gap-4">
