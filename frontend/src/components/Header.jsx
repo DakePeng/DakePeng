@@ -21,9 +21,9 @@ export default function Header() {
       </div>
       {isOpen && (
         <div className="md:hidden px-4 pb-4">
-          <a href="#about" className="block py-2 text-gray-700 hover:text-blue-600">About</a>
+          {/* <a href="#about" className="block py-2 text-gray-700 hover:text-blue-600">About</a>
           <a href="#projects" className="block py-2 text-gray-700 hover:text-blue-600">Projects</a>
-          <a href="#contact" className="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+          <a href="#contact" className="block py-2 text-gray-700 hover:text-blue-600">Contact</a> */}
         </div>
       )}
     </header>
