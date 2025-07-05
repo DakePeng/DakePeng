@@ -26,8 +26,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));  // <--- Add this line
-
 app.use(express.json());
 
 // Routes

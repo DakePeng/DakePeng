@@ -50,11 +50,10 @@ router.post("/", async (req, res) => {
       to: EMAIL_TO_USER,
       subject: "New Contact Form Submission",
       text: `
-You have a new contact form submission:
-
-Name: ${name}
-Email: ${email}
-Message: ${message}
+        You have a new contact form submission:
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
       `,
     };
 
