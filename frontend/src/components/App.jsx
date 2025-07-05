@@ -59,7 +59,7 @@ class App extends React.Component {
     return (
       <div className="mb-24">
         <Header />
-        {/* <FloatingMenu {...FloatingMenu.defaultProps} /> */}
+        <FloatingMenu {...FloatingMenu.defaultProps} />
         <Intro 
           coverImg = {this.state.coverImg}
           instagramUrl = {this.state.instagramUrl}
