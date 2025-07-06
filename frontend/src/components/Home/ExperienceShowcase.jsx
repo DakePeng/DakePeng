@@ -110,7 +110,7 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
           href={cvLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-4 py-2 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"
+          className="inline-block px-4 py-2 mt-6 md:mt-0 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"
         >
           View My Resume
         </a>
