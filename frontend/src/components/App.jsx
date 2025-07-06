@@ -70,7 +70,6 @@ class App extends React.Component {
           discordUrl = {this.state.discordUrl}
           introText = {this.state.introText}
         />
-        <SectionHeader title={"Testing Webhook"} description={""}/>
         <ExperienceShowcase
           experiences={experiences}
           selectedExperience={selectedExperience}
