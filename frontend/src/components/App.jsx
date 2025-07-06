@@ -25,7 +25,6 @@ class App extends React.Component {
       linkedinUrl : 'https://www.linkedin.com/in/kunzhi-peng-308909278/',
       email : 'dake20022@gmail.com',
       introText : 'I am a Computer Science and Cognitive Science major, recently graduated from Carleton College, MN. I enjoy learning and applying technology to real world problems and research projects. I\'m currently pursuing the paths of a Project Manager or a Full Stack Developer.',
-
     };
   }
   componentDidMount() {
@@ -35,7 +34,7 @@ class App extends React.Component {
       .then((response) => {
         const experiences = response.data;
         this.setState({
-          experiences: experiences,
+          experiences: [...experiences].sort((a, b) => a.order - b.order),
           selectedExperience: experiences[0] || {},
         });
       })

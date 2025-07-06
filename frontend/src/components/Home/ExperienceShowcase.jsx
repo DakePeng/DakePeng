@@ -8,7 +8,6 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
 
   const sectionTitle = 'Experience';
   const sectionDescription = '';
-  const sortedExperiences = [...experiences].sort((a, b) => a.order - b.order);
 
   const handleSelect = (exp) => {
     onSelectExperience(exp);
@@ -26,8 +25,8 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
       <div className="flex flex-col md:flex-row h-full p-4 md:p-6 gap-4">
         {/* Left: Experience Cards */}
         <div className="flex flex-col gap-4 w-full items-center md:items-start w-full md:w-1/3 md:overflow-y-auto md:max-h-[32rem] overflow-x-hidden md:pr-4">
-          {sortedExperiences.length > 0 ? (
-            sortedExperiences.map((exp) => (
+          {experiences.length > 0 ? (
+            experiences.map((exp) => (
               <ExperienceCard
                 key={exp._id}
                 logo={exp.logo}
