@@ -31,13 +31,11 @@ const ExperienceCard = ({ logo, jobTitle, company, dateRange, onClick }) => {
       <img
         src={logo || '/placeholder-logo.svg'}
         alt={`${company} logo`}
-        className="w-20 h-auto object-contain rounded-md mr-6"
+        className="w-20 h-auto object-contain rounded-md mr-6 cursor-pointer"
         onClick={onClick} // forward click on image
         onMouseEnter={() => setIsHovered(true)} // forward hover on image
         onMouseLeave={() => setIsHovered(false)}
-        onTouchStart={toggleHover} // toggle hover on touch start (mobile)
-        onTouchEnd={toggleHover} // toggle hover off on touch end (mobile)
-        style={{ touchAction: 'manipulation' }} // improve touch handling
+        onTouchStart={onClick}
       />
 
       <div className="flex flex-col text-left max-w-full overflow-hidden">
