@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
       }
 
       // Optionally parse body and check event type if you want
-      exec('/home/ec2-user/deploy.sh', (error, stdout, stderr) => {
+      exec('/home/ec2-user/DakePeng/backend/scripts/deploy.sh', (error, stdout, stderr) => {
         if (error) {
           console.error(`Deploy error: ${error.message}`);
           return;
