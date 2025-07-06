@@ -23,6 +23,6 @@ git pull origin main
 npm install
 
 # Restart backend server (using pm2, replace "backend-app" with your pm2 process name)
-pm2 restart backend-app
+pm2 restart backend
 
 echo "Deploy finished at $(date)"
