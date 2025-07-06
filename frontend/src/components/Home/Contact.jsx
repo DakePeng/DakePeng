@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import SectionLine from "./SectionLine";
-import {BACKEND_URL} from '../config.js'
+import {BACKEND_URL} from '../../config.js'
 
 export default function Contact() {
   const sectionTitle = "Get in Touch";

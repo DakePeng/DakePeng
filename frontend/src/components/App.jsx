@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from "axios";
-import ProjectCarousel from './ProjectCarousel.jsx';
-import Interests from './Interests.jsx';
-import Header from './Header.jsx';
-import ExperienceShowcase from './ExperienceShowcase.jsx';
-import Intro from './Intro.jsx';
-import FloatingMenu from './FloatingMenu.jsx';
-import Contact from './Contact.jsx';
-import About from './About.jsx'
+import ProjectCarousel from './Home/ProjectCarousel.jsx';
+import Interests from './Home/Interests.jsx';
+import Header from './Home/Header.jsx';
+import ExperienceShowcase from './Home/ExperienceShowcase.jsx';
+import Intro from './Home/Intro.jsx';
+import FloatingMenu from './Home/FloatingMenu.jsx';
+import Contact from './Home/Contact.jsx';
+import About from './Home/About.jsx'
+import BlogPost from './Blog/BlogPost.jsx'
 import {BACKEND_URL} from '../config.js'
 
 class App extends React.Component {
@@ -80,6 +81,7 @@ class App extends React.Component {
         <About />
       </div>
     );
+    // return (<BlogPost {...BlogPost.defaultProps}/>)
   }
 }
 

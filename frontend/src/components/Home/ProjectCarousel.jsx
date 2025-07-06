@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../General/ProjectCard';
 import SectionHeader from './SectionHeader';
 import SectionLine from './SectionLine';
 
