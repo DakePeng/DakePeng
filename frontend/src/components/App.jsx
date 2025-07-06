@@ -32,9 +32,9 @@ class App extends React.Component {
     const url_experience = url + '/api/experiences';
     axios.get(url_experience)
       .then((response) => {
-        const experiences = response.data;
+        const experiences = response.data.sort((a, b) => a.order - b.order);
         this.setState({
-          experiences: [...experiences].sort((a, b) => a.order - b.order),
+          experiences: experiences,
           selectedExperience: experiences[0] || {},
         });
       })
