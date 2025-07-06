@@ -10,6 +10,7 @@ import Contact from './Home/Contact.jsx';
 import About from './Home/About.jsx'
 import BlogPost from './Blog/BlogPost.jsx'
 import {BACKEND_URL} from '../config.js'
+import SectionHeader from './Home/SectionHeader.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -60,7 +61,6 @@ class App extends React.Component {
     return (
       <div className="mb-24">
         <Header />
-        <p> Testing Webhook1?</p>
         <FloatingMenu {...FloatingMenu.defaultProps} />
         <Intro 
           coverImg = {this.state.coverImg}
@@ -70,6 +70,7 @@ class App extends React.Component {
           discordUrl = {this.state.discordUrl}
           introText = {this.state.introText}
         />
+        <SectionHeader title={"Testing Webhook"} description={""}/>
         <ExperienceShowcase
           experiences={experiences}
           selectedExperience={selectedExperience}
