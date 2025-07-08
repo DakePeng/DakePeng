@@ -8,8 +8,7 @@ export const formatExperienceDescription = (description) => {
   if (!description) return [];
   
   return description
-    .replace(/\\n/g, "\n")
-    .split("\n")
+    .split("\\n")
     .filter(line => line.trim() !== ''); // Remove empty lines
 };
 

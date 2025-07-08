@@ -1,7 +1,19 @@
-import { formatExperienceDescription } from '@utils/home/experienceUtils';
+// src/components/ExperienceDetailView.jsx
+import React from 'react';
+import { formatExperienceDescription } from '@utils/Home/experienceUtils';
 import { EXPERIENCE_CONSTANTS } from '@constants/experienceConstants';
 
 const ExperienceDetailView = ({ selectedExperience }) => {
+  const renderDescriptionItems = () => {
+    if (!selectedExperience?.description) return null;
+    const lines = formatExperienceDescription(selectedExperience.description);
+    return lines.map((line, idx) => (
+      <li className="text-gray-800 whitespace-pre-line" key={idx}>
+        {line}
+      </li>
+    ));
+  };
+
   return (
     <div className="hidden md:flex flex-1 bg-white rounded-xl p-6 shadow-md max-h-[32rem] overflow-y-auto mt-4 md:mt-0">
       {selectedExperience ? (
@@ -14,7 +26,7 @@ const ExperienceDetailView = ({ selectedExperience }) => {
           </h3>
           <p className="text-gray-500 mb-6">{selectedExperience.dateRange}</p>
           <ul className="list-disc list-inside space-y-2 text-gray-800">
-            {formatExperienceDescription(selectedExperience.description)}
+            {renderDescriptionItems()}
           </ul>
         </div>
       ) : (

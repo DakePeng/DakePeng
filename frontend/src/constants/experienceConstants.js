@@ -3,7 +3,7 @@ export const EXPERIENCE_CONSTANTS = {
   SECTION_DESCRIPTION: '',
   NO_EXPERIENCES_MESSAGE: 'No experiences available.',
   SELECT_EXPERIENCE_MESSAGE: 'Select an experience to view details.',
-  BACK_BUTTON_TEXT: '← Back',
+  BACK_BUTTON_TEXT: '←',
   RESUME_BUTTON_TEXT: 'View My Resume',
   
   // CSS Classes
