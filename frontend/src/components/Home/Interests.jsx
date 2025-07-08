@@ -6,8 +6,8 @@ import {
   CrackedEgg,
   Learning,
 } from 'iconoir-react';
-import SectionHeader from './SectionHeader';
-import SectionLine from './SectionLine';
+import SectionHeader from './General/SectionHeader';
+import SectionLine from './General/SectionLine';
 
 const icons = [ 
   { Component: LaptopDevMode, label: 'Data & Computer Science' },

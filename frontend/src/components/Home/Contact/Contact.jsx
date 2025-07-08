@@ -1,10 +1,10 @@
-import SectionHeader from "./SectionHeader";
-import SectionLine from "./SectionLine";
-import ContactFormFields from "./ContactFormFields";
-import ContactStatusMessage from "./ContactStatusMessage";
+import SectionHeader from "../General/SectionHeader.jsx";
+import SectionLine from "../General/SectionLine.jsx";
+import ContactFormFields from "./FormFields.jsx";
+import ContactStatusMessage from "./FormStatusMessage.jsx";
 import { useContactForm } from '@hooks/useContactForm.js';
 import { CONTACT_CONSTANTS } from '@constants/contactConstants.js';
-import { extractFormData, resetForm, getButtonClasses } from '@utils/contactUtils.js';
+import { extractFormData, resetForm, getButtonClasses } from '@utils/Home/contactUtils.js';
 
 export default function Contact() {
   const { status, loading, submitForm } = useContactForm();

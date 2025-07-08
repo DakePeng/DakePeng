@@ -5,7 +5,7 @@ import Header from './Header.jsx';
 import ExperienceShowcase from './ExperienceShowcase.jsx';
 import Intro from './Intro.jsx';
 import FloatingMenu from './FloatingMenu/FloatingMenu.jsx';
-import Contact from './Contact.jsx';
+import Contact from './Contact/Contact.jsx';
 import About from './About/About.jsx';
 import LoadingSpinner from './LoadingSpinner.jsx';
 import ErrorMessage from './ErrorMessage.jsx';

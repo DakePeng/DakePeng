@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-import SectionLine from './SectionLine';
+import SectionLine from './General/SectionLine';
 import { Instagram, Linkedin, Mail, Discord } from 'iconoir-react';
 
 const icons = [

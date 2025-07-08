@@ -1,4 +1,4 @@
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../General/SectionHeader";
 import GitHubLink from "./GitHubLink";
 import LiscenseBadge from "./LiscenseBadge";
 import TechDescription from "./TechDescription";

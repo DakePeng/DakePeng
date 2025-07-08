@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ProjectCard from '../General/ProjectCard';
-import SectionHeader from './SectionHeader';
-import SectionLine from './SectionLine';
+import SectionHeader from './General/SectionHeader';
+import SectionLine from './General/SectionLine';
 
 const ProjectCarousel = ({ projects }) => {
   const [centerIndex, setCenterIndex] = useState(2); // default for desktop, updated with SIDE_COUNT

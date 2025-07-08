@@ -1,4 +1,4 @@
-import { CONTACT_SECTION } from '@constants/contactConstants.js';
+import { CONTACT_CONSTANTS } from '@constants/contactConstants.js';
 
 const FormField = ({ type, name, placeholder, className, required = false, rows = null }) => {
   const baseClasses = "w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500";
@@ -33,13 +33,13 @@ export default function ContactFormFields() {
         <FormField
           type="text"
           name="name"
-          placeholder={CONTACT_SECTION.PLACEHOLDERS.NAME}
+          placeholder={CONTACT_CONSTANTS.PLACEHOLDERS.NAME}
           required
         />
         <FormField
           type="email"
           name="email"
-          placeholder={CONTACT_SECTION.PLACEHOLDERS.EMAIL}
+          placeholder={CONTACT_CONSTANTS.PLACEHOLDERS.EMAIL}
           required
         />
       </div>
@@ -47,9 +47,9 @@ export default function ContactFormFields() {
       <FormField
         type="textarea"
         name="message"
-        placeholder={CONTACT_SECTION.PLACEHOLDERS.MESSAGE}
+        placeholder={CONTACT_CONSTANTS.PLACEHOLDERS.MESSAGE}
         className="mb-4"
-        rows={CONTACT_SECTION.FORM.TEXTAREA_ROWS}
+        rows={CONTACT_CONSTANTS.FORM.TEXTAREA_ROWS}
         required
       />
     </>
