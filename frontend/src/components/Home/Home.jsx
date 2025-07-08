@@ -1,14 +1,14 @@
 import React from 'react';
 import ProjectCarousel from './ProjectCarousel.jsx';
 import Interests from './Interests/Interests.jsx';
-import Header from './General/Header.jsx';
+import Header from '../General/Header.jsx';
 import ExperienceShowcase from './ExperienceShowCase/ExperienceShowcase.jsx';
 import Intro from './Intro/Intro.jsx';
 import FloatingMenu from './FloatingMenu/FloatingMenu.jsx';
 import Contact from './Contact/Contact.jsx';
 import About from './About/About.jsx';
-import LoadingSpinner from './General/LoadingSpinner.jsx';
-import ErrorMessage from './General/ErrorMessage.jsx';
+import LoadingSpinner from '../General/LoadingSpinner.jsx';
+import ErrorMessage from '../General/ErrorMessage.jsx';
 import { usePortfolioData } from '@hooks/usePortfolioData.js';
 import { PORTFOLIO_CONSTANTS } from '@constants/portfolioData.js';
 
