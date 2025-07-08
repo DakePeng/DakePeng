@@ -5,7 +5,7 @@ import Interests from './Home/Interests.jsx';
 import Header from './Home/Header.jsx';
 import ExperienceShowcase from './Home/ExperienceShowcase.jsx';
 import Intro from './Home/Intro.jsx';
-import FloatingMenu from './Home/FloatingMenu.jsx';
+import FloatingMenu from './Home/FloatingMenu/FloatingMenu.jsx';
 import Contact from './Home/Contact.jsx';
 import About from './Home/About.jsx'
 import BlogPost from './Blog/BlogPost.jsx'
@@ -81,7 +81,7 @@ class App extends React.Component {
         <About />
       </div>
     );
-    // return (<BlogPost {...BlogPost.defaultProps}/>)
+    //return (<BlogPost {...BlogPost.defaultProps}/>)
   }
 }
 
