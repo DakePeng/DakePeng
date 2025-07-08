@@ -1,4 +1,5 @@
 export const PORTFOLIO_CONSTANTS = {
+  NAME: "Dake",
   CV_LINK: "https://dakepengportfolio.s3.us-east-2.amazonaws.com/Kunzhi+(Dake)+Peng+Resume.docx",
   COVER_IMG: "https://dakepengportfolio.s3.us-east-2.amazonaws.com/Cover.jpg",
   INSTAGRAM_URL: 'https://www.instagram.com/dake.peng/',

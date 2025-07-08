@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ExperienceCard from './ExperienceCard';
-import SectionHeader from './General/SectionHeader';
-import SectionLine from './General/SectionLine';
+import SectionHeader from '../General/SectionHeader';
+import SectionLine from '../General/SectionLine';
 
 const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperience, cvLink }) => {
   const [showMobileDetail, setShowMobileDetail] = useState(false);
