@@ -7,8 +7,8 @@ import Intro from './Intro.jsx';
 import FloatingMenu from './FloatingMenu/FloatingMenu.jsx';
 import Contact from './Contact/Contact.jsx';
 import About from './About/About.jsx';
-import LoadingSpinner from './LoadingSpinner.jsx';
-import ErrorMessage from './ErrorMessage.jsx';
+import LoadingSpinner from './General/LoadingSpinner.jsx';
+import ErrorMessage from './General/ErrorMessage.jsx';
 import { usePortfolioData } from '@hooks/usePortfolioData.js';
 import { PORTFOLIO_CONSTANTS } from '@constants/portfolioData.js';
 
