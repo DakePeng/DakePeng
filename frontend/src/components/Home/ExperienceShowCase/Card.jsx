@@ -3,14 +3,6 @@ import { useState } from 'react';
 const ExperienceCard = ({ logo, jobTitle, company, dateRange, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Handle keyboard accessibility
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onClick?.(e);
-    }
-  };
-
   // Toggle hover on mobile when touching (optional, or just onClick)
   const toggleHover = () => setIsHovered((prev) => !prev);
 
@@ -19,7 +11,6 @@ const ExperienceCard = ({ logo, jobTitle, company, dateRange, onClick }) => {
       role="button"
       tabIndex={0}
       onClick={onClick}
-      onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`

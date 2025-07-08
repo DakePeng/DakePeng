@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
-import ExperienceCard from './ExperienceCard';
+// src/components/ExperienceShowcase.jsx
+import React from 'react';
+import ExperienceCard from './Card';
 import SectionHeader from '../General/SectionHeader';
 import SectionLine from '../General/SectionLine';
+import ExperienceDetailView from './DetailView';
+import MobileExperienceOverlay from './MobileOverlay';
+import { useExperienceNavigation } from '@hooks/useExperienceNavigation';
+import { EXPERIENCE_CONSTANTS } from '@constants/experienceConstants';
+import { getExperienceCardClass } from '@utils/Home/experienceUtils';
 
 const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperience, cvLink }) => {
-  const [showMobileDetail, setShowMobileDetail] = useState(false);
-
-  const sectionTitle = 'Experience';
-  const sectionDescription = '';
-
-  const handleSelect = (exp) => {
-    onSelectExperience(exp);
-    setShowMobileDetail(true); // Show overlay on mobile
-  };
-
-  const handleBack = () => {
-    setShowMobileDetail(false);
-  };
+  const { showMobileDetail, handleSelect, handleBack } = useExperienceNavigation(onSelectExperience);
 
   return (
     <section id="experience" className="max-w-6xl mx-auto scroll-mt-20 relative">
-      <SectionHeader title={sectionTitle} description={sectionDescription} />
+      <SectionHeader 
+        title={EXPERIENCE_CONSTANTS.SECTION_TITLE} 
+        description={EXPERIENCE_CONSTANTS.SECTION_DESCRIPTION} 
+      />
+      
       {/* Layout */}
       <div className="flex flex-col md:flex-row h-full p-4 md:p-6 gap-4">
         {/* Left: Experience Cards */}
@@ -35,72 +33,23 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
                 dateRange={exp.dateRange}
                 description={exp.description}
                 onClick={() => handleSelect(exp)}
-                className={`cursor-pointer ${
-                  selectedExperience?._id === exp._id ? 'ring-2 ring-blue-500' : ''
-                }`}
+                className={getExperienceCardClass(exp, selectedExperience)}
               />
             ))
           ) : (
-            <p className="text-gray-500">No experiences available.</p>
+            <p className="text-gray-500">{EXPERIENCE_CONSTANTS.NO_EXPERIENCES_MESSAGE}</p>
           )}
         </div>
 
         {/* Right: Desktop Detail View */}
-        <div className="hidden md:flex flex-1 bg-white rounded-xl p-6 shadow-md max-h-[32rem] overflow-y-auto mt-4 md:mt-0">
-          {selectedExperience ? (
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                {selectedExperience.jobTitle}
-              </h2>
-              <h3 className="text-xl md:text-2xl text-gray-700 mb-2">
-                {selectedExperience.company}
-              </h3>
-              <p className="text-gray-500 mb-6">{selectedExperience.dateRange}</p>
-              <ul className="list-disc list-inside space-y-2 text-gray-800">
-                {selectedExperience.description? selectedExperience.description.split("\\n").map((line, idx) =>
-                  <li className="text-gray-800 whitespace-pre-line" key = {idx}> {line} </li>
-                ): ""}
-              </ul>
-            </div>
-          ) : (
-            <p className="text-gray-500">Select an experience to view details.</p>
-          )}
-        </div>
+        <ExperienceDetailView selectedExperience={selectedExperience} />
 
         {/* Mobile Overlay */}
-        {showMobileDetail && selectedExperience && (
-          <div className="fixed inset-0 z-50 bg-white p-4 md:p-6 overflow-y-auto md:hidden">
-            <button
-              onClick={handleBack}
-              aria-label="Go back"
-              className="mb-4 text-sm text-blue-700 border border-blue-700 rounded-full px-4 py-1 hover:bg-blue-700 cursor-pointer hover:text-white transition"
-            >
-              ← Back
-            </button>
-            <h2 className="text-2xl font-bold mb-2">
-              {selectedExperience.jobTitle}
-            </h2>
-            <h3 className="text-xl text-gray-700 mb-1">
-              {selectedExperience.company}
-            </h3>
-            <p className="text-gray-500 mb-4">{selectedExperience.dateRange}</p>
-            <ul className="list-disc list-inside space-y-2 text-gray-800">
-              {selectedExperience.description
-                ? selectedExperience.description
-                    .replace(/\\n/g, "\n")
-                    .split("\n")
-                    .map((line, idx) => (
-                      <li
-                        className="text-gray-800 whitespace-pre-line"
-                        key={idx}
-                      >
-                        {line}
-                      </li>
-                    ))
-                : null}
-            </ul>
-          </div>
-        )}
+        <MobileExperienceOverlay 
+          showMobileDetail={showMobileDetail}
+          selectedExperience={selectedExperience}
+          onBack={handleBack}
+        />
       </div>
 
       {/* Resume Button */}
@@ -111,7 +60,7 @@ const ExperienceShowcase = ({ experiences, selectedExperience, onSelectExperienc
           rel="noopener noreferrer"
           className="inline-block px-4 py-2 mt-6 md:mt-0 text-sm font-semibold text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"
         >
-          View My Resume
+          {EXPERIENCE_CONSTANTS.RESUME_BUTTON_TEXT}
         </a>
       </div>
 
