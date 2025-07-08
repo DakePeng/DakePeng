@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectCarousel from './ProjectCarousel.jsx';
+import ProjectCarousel from './ProjectCarousel/ProjectCarousel.jsx';
 import Interests from './Interests/Interests.jsx';
 import Header from '../General/Header.jsx';
 import ExperienceShowcase from './ExperienceShowCase/ExperienceShowcase.jsx';
