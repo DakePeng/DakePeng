@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectCarousel from './ProjectCarousel.jsx';
-import Interests from './Interests.jsx';
+import Interests from './Interests/Interests.jsx';
 import Header from './General/Header.jsx';
 import ExperienceShowcase from './ExperienceShowCase/ExperienceShowcase.jsx';
 import Intro from './Intro/Intro.jsx';
