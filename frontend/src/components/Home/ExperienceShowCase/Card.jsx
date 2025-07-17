@@ -3,8 +3,18 @@ import { useState } from 'react';
 const ExperienceCard = ({ logo, jobTitle, company, dateRange, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Toggle hover on mobile when touching (optional, or just onClick)
-  const toggleHover = () => setIsHovered((prev) => !prev);
+  // Handle image click with event propagation control
+  const handleImageClick = (e) => {
+    e.stopPropagation(); // Prevent event bubbling to card
+    onClick?.(e);
+  };
+
+  // Handle touch events for mobile
+  const handleImageTouch = (e) => {
+    e.stopPropagation(); // Prevent event bubbling to card
+    e.preventDefault(); // Prevent default touch behavior
+    onClick?.(e);
+  };
 
   return (
     <div
@@ -23,10 +33,11 @@ const ExperienceCard = ({ logo, jobTitle, company, dateRange, onClick }) => {
         src={logo || '/placeholder-logo.svg'}
         alt={`${company} logo`}
         className="w-20 h-auto object-contain rounded-md mr-6 cursor-pointer"
-        onClick={onClick} // forward click on image
-        onMouseEnter={() => setIsHovered(true)} // forward hover on image
+        onClick={handleImageClick}
+        onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onTouchStart={onClick}
+        onTouchEnd={handleImageTouch}
+        style={{ touchAction: 'manipulation' }}
       />
 
       <div className="flex flex-col text-left max-w-full overflow-hidden">
