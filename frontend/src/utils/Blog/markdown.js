@@ -32,13 +32,13 @@ const replaceFootnoteReferences = (paragraph) => {
 };
 
 const extractCitations = (md) => {
-    const citations = {};
-    const regex = /\[\^\(([^)]+)\)\]/g;
+    const citations = new Map();
+    const regex = /\[\^\(([^)]+)\)\]:\s*([\s\S]+?)(?=\n\[\^\(|\n*$)/gm;
     let match;
     while ((match = regex.exec(md))) {
-        citations[match[1]] = true;
+        citations.set(match[1], match[2].trim());
     }
-    return Object.keys(citations);
+    return citations;
 };
 
 // Replace citation references with superscript links

@@ -1,5 +1,11 @@
 @import "tailwindcss";
 /* index.css */
 body {
-  background-color:  #f4f6f8;
+  background-color: #f4f6f8;
+  font-family: 'Karla', sans-serif;
+}
+
+/* Apply Karla to all headings and text */
+h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea {
+  font-family: 'Karla', sans-serif;
 }

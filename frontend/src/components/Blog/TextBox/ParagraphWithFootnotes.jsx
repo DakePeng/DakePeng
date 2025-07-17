@@ -8,6 +8,10 @@ import { CustomList, CustomListItem } from './CustomList.jsx';
 import { CustomH1, CustomH2, CustomH3, CustomH4, CustomH5 } from './Headings.jsx';
 import CustomBlockquote from './CustomBlockquote.jsx';
 
+const CustomParagraph = ({ node, ...props }) => (
+  <p className="leading-relaxed" {...props} />
+);
+
 const markdownComponents = {
   code: CodeBlock,
   a: CustomLink,
@@ -19,6 +23,7 @@ const markdownComponents = {
   h4: CustomH4,
   h5: CustomH5,
   blockquote: CustomBlockquote,
+  p: CustomParagraph,
 };
 
 const ParagraphWithFootnotes = ({ paragraph, footnotes, index }) => {

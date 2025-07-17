@@ -11,7 +11,6 @@ export default function BlogPostTextBox({ markdown }) {
     const footnotes = useMemo(() => extractFootnotes(markdown), [markdown]);
     const paragraphs = useMemo(() => extractParagraphs(markdown), [markdown]);
     const citations = useMemo(() => extractCitations(markdown), [markdown]);
-
     return (
         <div className="prose prose-indigo dark:prose-invert max-w-3xl mx-auto px-6 py-12">
             {paragraphs.map((paragraph, index) => (
@@ -22,7 +21,7 @@ export default function BlogPostTextBox({ markdown }) {
                     index={index}
                 />
             ))}
-            <Citations citations={citations} footnotes={footnotes} />
+            <Citations citations={citations} />
         </div>
     );
 }
