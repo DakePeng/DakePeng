@@ -1,5 +1,5 @@
 const CustomList = ({ node, ...props }) => (
-  <ul className="list-disc list-inside mb-6 max-w-3xl mx-auto" {...props} />
+  <ul className="list-disc list-inside mb-6" {...props} />
 );
 
 const CustomListItem = ({ node, ...props }) => (

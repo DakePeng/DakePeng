@@ -1,4 +1,4 @@
-import BlogPostTextBox from './BlogPostTextBox/BlogPostTextBox.jsx'
+import BlogPostTextBox from './TextBox/TextBox.jsx'
 
 export default function BlogPost({ markdown }) {
     return (
@@ -13,7 +13,7 @@ React is a popular JavaScript library for building user interfaces.[^1] It allow
 
 ## Why use React?
 
-React's component-based architecture makes it easier to reason about your app [^@blogpostcitation].
+React's component-based architecture makes it easier to reason about your app [^(Wang, 2025)].
 
 \`\`\`js
 // Example React component
@@ -35,7 +35,7 @@ Here is a repeated footnote reference.[^1]
 ---
 
 [^1]: React was created by Jordan Walke at Facebook.
-[^@blogpostcitation]: abfsjafik
+[^(Wang, 2025)]: abfsjafik
 `;
 
 BlogPost.defaultProps = {

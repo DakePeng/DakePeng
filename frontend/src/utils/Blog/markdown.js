@@ -1,8 +1,10 @@
 const extractFootnotes = (md) => {
+    // First remove citations to avoid conflicts
+    const mdWithoutCitations = md.replace(/\[\^\([^)]+\)\]/g, '');
     const footnotes = {};
     const regex = /^\[\^(.+?)\]:\s*([\s\S]+?)(?=\n\[\^|\n*$)/gm;
     let match;
-    while ((match = regex.exec(md))) {
+    while ((match = regex.exec(mdWithoutCitations))) {
         footnotes[match[1]] = match[2].trim();
     }
     return footnotes;
@@ -18,14 +20,39 @@ const extractParagraphs = (md) => {
 
 // Find all footnote references in a paragraph
 const findFootnoteReferences = (paragraph) => {
-    return [...paragraph.matchAll(/\[\^(.+?)\]/g)].map((m) => m[1]);
+    // Only match pure footnotes, not citations
+    return [...paragraph.matchAll(/\[\^(?!\()(.+?)\]/g)].map((m) => m[1]);
 };
 
 // Replace footnote references with superscript links
 const replaceFootnoteReferences = (paragraph) => {
     return paragraph.replace(/\[\^(.+?)\]/g, (_, id) => {
-        return `<a href="#footnote-${id}" class="align-super text-xs text-blue-600 cursor-pointer">${id}</a>`;
+        return `<span class="align-super text-xs text-blue-600">${id}</span>`;
     });
 };
 
-export {extractFootnotes, extractParagraphs, findFootnoteReferences, replaceFootnoteReferences}
+const extractCitations = (md) => {
+    const citations = {};
+    const regex = /\[\^\(([^)]+)\)\]/g;
+    let match;
+    while ((match = regex.exec(md))) {
+        citations[match[1]] = true;
+    }
+    return Object.keys(citations);
+};
+
+// Replace citation references with superscript links
+const replaceCitationReferences = (paragraph) => {
+    return paragraph.replace(/\[\^\(([^)]+)\)\]/g, (_, id) => {
+        return `<a href="#citation-${id}" class="align-super text-xs text-red-600 cursor-pointer">[${id}]</a>`;
+    });
+};
+
+export {
+    extractFootnotes,
+    extractParagraphs,
+    findFootnoteReferences,
+    replaceFootnoteReferences,
+    extractCitations,
+    replaceCitationReferences
+}
