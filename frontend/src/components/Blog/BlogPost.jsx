@@ -1,5 +1,75 @@
 import BlogPostTextBox from './TextBox/TextBox.jsx'
 
+const sampleMd = `# Genealogy, Language, and Anti-Metaphysics
+#### Dake Peng
+#### 2022/02/10
+
+In computer screens, we see this technology called FRC. FRC is a way of displaying a new color by quickly shifting between two colors—so that monitors can go beyond their physical limits and produce a wider spectrum than it is designed to. Genealogy does something similar. It is bounded by the metaphysical nature of language, a monitor that only allows black or white—being or nothingness—yet it generates grayness through infinite denial and self-denial, through pushing the “masquerade” to its limits by constantly switching between masks, with the goal of breaking the deeply rooted rules of this game of metaphysics that we take for granted [^(Foucault, 1978)]. Genealogy is a political revolution on the individual level, and its politicalness is intended.
+
+## What is Metaphysics?
+
+What is the definition of metaphysics? This would be a tricky question for any philosopher. It is easy to say what metaphysics embodies, or what is “metaphysical”: an ontological unity, a oneness derived from a “first cause” (a “God”, if you will), a teleological end (a “heaven”, an “eternal bliss”), and of a methodological morality—a uniform guide to living a “good” life. But what is not metaphysical?
+
+Language is in its nature metaphysical—it is engraved with oneness, values, and causality—and this is precisely why metaphysics cannot be defined. To answer the question “what is metaphysics?” the question “what is not metaphysics?” must be answered simultaneously. But the latter is impossible—the fundamental supposition of all metaphysics: “there are beings but not nothingness” grants its exhaustiveness. The semiotic complement does not exist for “metaphysics”—it is itself the master-signifier. Metaphysics therefore also intertwines with a power relationship, one that functions through imposing dichotomies derived from the fundamental separation of being from nothingness—they are dichotomies of “good” or “evil”, of “friends” or “others”, of “yes” or “no”.
+
+## Nietzsche’s Dilemma
+
+How, then, can an anti-metaphysical, or even a-metaphysical[^1] idea be expressed convincingly through language? Nietzsche was completely aware of this dilemma, as he notes [^(Nietzsche, 1968)]:
+
+> Language depends on the most naive prejudices.  
+> Now we read disharmonies and problems into things because we think only in the form of language—and thus believe in the “eternal truth” of “reason” (e.g., subject, attribute, etc.)  
+> We cease to think when we refuse to do so under the constraint of language; we barely reach the doubt that sees this limitation as a limitation.
+
+## Genealogy and Politicalness
+
+*Genealogy*[^2] is not an expression of Nietzsche’s own ressentiment against reality—although it could only appear as so on the surface. The arguments Nietzsche makes are intended to be political—they are formulations of language that convey something hidden deeper than its connotation, something on the ideological level. Strategically[^3] (or should I say, politically), I shall make a dichotomy between two types of politicalness to clarify: the first type of politicalness, which I call the intended politicalness, lies in expression—the expressor articulates an idea that is intentionally (but not necessarily willingly) disparate from their “original” thought, in hope of making a change in their audience[^4][^5]. The other type of politicalness, which I can call the unintended politicalness, lies in interpretation—the interpreter assigns a new meaning to language based on their discourse, their experience, and their beliefs—and the “end result” deviates from what the expressor expected[^6].
+
+## Genealogy as a Political Weapon
+
+Genealogy is not a discipline—it does not capture a general representation of history, but rather grasps some “trivial” practices against the metanarrative. A genealogist is a conscious politician: he is less devoted than a believer, but he is more serious than a player. Expressions of the genealogist are intended to be political—they follow the rules of the game but aim at subverting the game. Genealogy is Nietzsche’s Antinomy[^7]. Kant showed the borders of reason with reasoning, while Nietzsche shows the limits of metaphysics with a political language that is metaphysical in nature.
+
+Genealogy is a political weapon, a long and sharp nail, to stab at the heart of metaphysics. Christianity—the most profound practitioner, but also the most ignorant puppet, the most obedient child of Metaphysics, the Jesus Christ of all forms of God—is the first to be crucified and blasphemed to start the war. But there was such a disparity between the two sides—it was Nietzsche against the world. Thus, *Genealogy* was also a manifesto—a call for micro-revolutions.
+
+## Dreams within Dreams
+
+*Genealogy* is formulated like a dream in Christopher Nolan’s *Inception*. It shows dreams within dreams. In each next essay, Nietzsche wakes from the former dream, and a layer of tension and nuance is revealed through reflection and self-denial. The increasing conflict in the narrator—a role played by Nietzsche—is key to understanding the politicalness of *Genealogy*, as well as genealogy itself.
+
+### First Dream: The Admirer
+
+In the deepest dream, Nietzsche plays the role of a fanatic admirer of the master. The admirer is a neurotic subject[^8]—a complete a-metaphysician. He projects himself onto the master, and thus speaks like a master, with nothing but confident and self-affirming language. To the admirer, the master is “noble”, “capable”, “pure”, and “self-centric” [^(Nietzsche, 1989), First Essay, Section 5]. The master is indeed also “racist”, “manipulative”, “exclusive”, and “egoistic”, but these words in language—also something poisoned by the slaves—are bad to the master, and thus not adopted by the admirer. The master is tolerant—that is the biggest, if not the only, difference between him and the slave. For the slave the other is to be made evil, rejected, expelled, dehumanized, isolated—they do everything they can to distance themselves from the other. For the master the other is just there—he may despise, hate, or even harm the other, but he rejects to disconnect from them. Thus, the admirer mimics the master’s tone—as if he can be possessed by the master and gain his virtues. “Bad air! Bad air!” sighs the admirer to the slaves, the believers of Christianity and metaphysics [^(Nietzsche, 1989), First Essay, Section 12].
+
+### Second Dream: The Cynical Prophet
+
+But what a madman the admirer is! The master is but an imaginary figure of his creation, the sum of everything he cannot be—his psycholagny! Who can even become a master? Aren’t we all slaves?
+
+So thought Nietzsche in his second dream, when he wakes up and plays the role of a cynical prophet. The prophet is a perverse subject—an anti-metaphysician. The prophet also speaks absolutely, but he uses only negative language—as the slaves do. He announces the world to be wrong: the people disciplined by metaphysics are betraying their nature. They are internalizing the suffering that they were supposed to exert as anger and revenge. They make harmful actions crimes, and the inflictors guilty. To “improve” they start calculating, forgetting to forget [^(Nietzsche, 1989), Second Essay, Section 13]. By the creation of God, everyone is made sinners. And since that is an innate, moral deficiency, there is no responsibility for the harm inflicted—but the debt can never be repaid! People thus fool themselves with the phantom of salvation, committing suicide to their animal self (“Selbsttierqualeri”) [^(Nietzsche, 1989), Second Essay, Section 24].
+
+The prophet deconstructs the ideals but is impotent to establish a new one—the prophet is aware of his weakness—he has no choice but to become another self-deceiver. He could do nothing but pray, while announcing publicly the forthcoming of Zarathustra, praying for it in silence.
+
+### Third Dream: The Ascetic Philosopher
+
+But that was a dream. Zarathustra is not coming. In the third essay, Nietzsche wakes up as an ascetic philosopher, this time in reality. The ascetic philosopher is a psychotic subject—a metaphysician in essence. The philosopher speaks with nuance, with firm but non-assertive language—it becomes impossible for the reader to declare whether the philosopher is for or against the ascetic ideals. The philosopher knows we are all slaves “sick” from the ascetic ideal, an ideal that creates affirmation in denying our nature. But we also need that sickness to even have the faintest “Yeses” against our unbreakable restraints—our metaphysical nature inherited from society. We need it to be alive [^(Nietzsche, 1989), Third Essay, Section 13]. Sickness is bad, but an unavoidable badness. What a desperate reality! What can we do but laugh? What can we do but be “comedians” of metaphysics and Christianity—of our lives [^(Nietzsche, 1989), Third Essay, Section 26]? The philosopher is forced to make peace with metaphysics, to obey it to survive. But he makes a choice of bravery: if we cannot break from our metaphysical fate, at least let us face it directly, let us burn our last bit to at least try to be honest to ourselves! Let us make an ultimate metaphysics[^9] that is free from creating power relations—power relations that control us! The philosopher made will-to-power itself the first cause—a metaphysics that dissects all power relations to the nature of being, a metaphysics against all metaphysics.
+
+## Conclusion
+
+It is with this realization that Nietzsche constructs *Genealogy*. Not only are the genealogies of “good and bad”, of “guilt and bad conscience”, of “aesthetic ideals” political antitheses of the Christian morality, *Genealogy* itself progresses dialectically in politically presenting its attitude towards metaphysics with a shift of language: from an a-metaphysical view, with positive, affirming, non-binary language used by a master, to the anti-metaphysical view, which adopts cynic, denying, language used by the prophet, to finally a political acceptance of metaphysics—with a language, though metaphysical in essence, full of tension and nuance used by a philosopher. This is not a dialecticism that settles with synthesis—it is never settled. Politicalness made “anti-metaphysics” a continually unfolding action rather than a set attitude or stance. And it is in this way *Genealogy* is a manifesto of individual revolutions: it can only be alive through a new self-denial, a perpetual political agonism, a critical inspection of the present [^(Foucault, 1984)].
+
+[^1]: It is dangerous to take anti-metaphysics as a-metaphysical—in fact in doing that one is practicing a metaphysical dichotomy. In a similar fashion to how Foucault describes the “blackmail” of enlightenment, to position oneself as “against” or “anti” metaphysics is submitting to its authority [^(Foucault, 1984)].
+[^2]: I use the italicized *Genealogy* to refer to the book *On the Genealogy of Morals*, and “genealogy” to represent the methodology of struggle. In fact (and in response to the prompt), I think that the book as a whole represents the methodology of genealogy—the individual topic in the book are rather “genealogies”—practices of genealogy—to me.
+[^3]: In fact, my use of “politicalness” pertains to how Foucault uses “strategies” in [^(Foucault, 1982)]. But I think politicalness lies more in text (or in a broader sense, any kind of expression, even through action, to the public) and the individuals that interact with that text.
+[^4]: For example (although I hesitate to give examples), the expression of my rejection of the present identity politics is political. I do not deny the achievements made by gender and racial politics—in fact I find them quite satisfying, at least from the practical perspective (in terms of statistics if a standard is necessary). But the alienation and othering that happened in this process (such that the minorities are instructed to otherize themselves and are turned against the imagined other “majority”) is what is dangerous. I don’t think that the expression of my rejection is a synthetic decision—the conflicts within it are not resolved. I disagree that a genuine synthetic decision can be made: to do so one has to efface the difference between the conflicting forces and place them on the same level—a process of self-deception. Only because I can only make one decision or take one position (not deciding is also a decision here) do I take that position—and my intention is, as a quirk and cynic, to at least raise awareness of this danger.
+[^5]: Of course, there are only certain things that can actually be said, and there are things that can only be expressed in a limited way at a certain era. There are restraints to this political activity, but I would like to stress the active, creative part of it.
+[^6]: This is the genealogy of *Genealogy*—an assumption of why the text is presented the way it is. The revelation of politicalness certainly undermines the effectiveness of *Genealogy*—the effectiveness in traumatizing and provoking. I also know the powerfulness of and danger of overusing this tool. But I take the introduction of the concept of politicalness to be necessary, and to be political. The world is so intolerant for the ideas Nietzsche defends—in fact among some people Nietzsche is the other (Nazi, racist…)—that they need a justification formulated like this to start interacting with them: “Nietzsche wanted ... (e.g., Dionysian spirit) so bad, that he had no choice but to ... (e.g., deny modern culture and elevate the Greek culture above it).” (Fun fact, this is exactly what I said to convince one of our classmates.)
+[^7]: It seems that this idea coincided with Deleuze, in [^(Deleuze, 2006), p.88].
+[^8]: I speak in Lacanian terms here, so as “perverse subject” and “psychotic subject”—these are the three types of subjects in Lacanian psychoanalysis. I think the Symbolic Order and metaphysics are synonymous enough in this context that this way of presenting can fit their definitions.
+[^9]: This pertains to Heidegger’s discussion of Nietzsche as the “Thinker of the Consummation of Metaphysics” in [^(Heidegger, 1961)].
+[^(Foucault, 1978)]: Michel Foucault. “Nietzsche, Genealogy, History”. 1978.  
+[^(Foucault, 1984)]: Michel Foucault. “What is Enlightenment”, The Foucault Reader. Pantheon, 1984.  
+[^(Nietzsche, 1968)]: Friedrich Wilhelm Nietzsche. The Will to Power. Vintage, 1968.  
+[^(Foucault, 1982)]: Michel Foucault. “The Subject and Power”. Critical Inquiry, 8(4):777–795, 1982.  
+[^(Deleuze, 2006)]: Gilles Deleuze. Nietzsche and philosophy. Columbia University Press, 2006.  
+[^(Nietzsche, 1989)]: Friedrich Wilhelm Nietzsche and Reginald John Hollingdale. On the Genealogy of Morals. Vintage, 1989.  
+[^(Heidegger, 1961)]: Martin Heidegger. Nietzsche. Harpersanfrancisco, 1961.`;
 export default function BlogPost({ markdown }) {
     return (
       <BlogPostTextBox markdown = {markdown}/>
