@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useResponsive } from "@hooks/useResponsive.js";
 import { scrollToElement } from "@utils/General/scrollUtils.js";
-import MenuBackdrop from "./MenuBackdrop.jsx";
+import MenuBackdrop from "./MenuBackDrop.jsx";
 import MenuList from "./MenuList.jsx";
 import MenuToggle from "./MenuToggle.jsx";
 
